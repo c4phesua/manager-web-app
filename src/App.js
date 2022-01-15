@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import HelloWorld from './page/HelloWorld';
+import HelloWorld from './app/page/HelloWorld';
 import { ThemeProvider } from '@material-ui/styles';
 
 function App() {
