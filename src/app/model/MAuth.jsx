@@ -10,10 +10,11 @@ const MAuth = {
       Services.getMe().then(({ data }) => {
         localStorage.setItem("User", JSON.stringify(data));
       })
+      .then(() => {
+        PageRouter.redirect("/");
+      })
     })
-    .then(() => {
-      PageRouter.redirect("/");
-    })
+
   },
   logout() {
     localStorage.clear();

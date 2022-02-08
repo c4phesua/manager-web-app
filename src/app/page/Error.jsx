@@ -1,9 +1,9 @@
 import React from 'react';
-const Error = () => {
-  document.title('Error')
+const Error = ({ message = '404 not found'}) => {
+  document.title = 'Error';
   return (
     <div>
-      404 not found
+      {message}
     </div>
   )
 };

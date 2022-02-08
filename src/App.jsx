@@ -12,18 +12,26 @@ import LogoutPage from './app/page/LogoutPage';
 import UnauthenticatedRoute from './app/routes/UnauthenticatedRoute';
 import CommonAuthenticatedRoute from './app/routes/CommonAuthenticatedRoute';
 import Error from './app/page/Error';
+import AdminPageTest from './app/page/AdminPageTest';
+import ManagerPageTest from './app/page/ManagerPageTest';
+import AuthorizedRoute from './app/routes/AuthorizedRoute';
+import { ROLE } from './app/util/Constant';
 
 
 function App() {
+  console.log('parsed', JSON.parse(localStorage.getItem("User")));
+  console.log('un parsed', localStorage.getItem("User"));
 
   return (
     <div className="App">
       <ThemeProvider>
         <Router>
           <Switch>
-            <CommonAuthenticatedRoute exact path={'/'} component={HelloWorld} />
+            <CommonAuthenticatedRoute exact path={RouteConstants.root} component={HelloWorld} />
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
             <CommonAuthenticatedRoute exact path={RouteConstants.logout} component={LogoutPage} />
+            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.adminTest} component={AdminPageTest} />
+            <AuthorizedRoute role={ROLE.MANAGER} exact path={RouteConstants.managerTest} component={ManagerPageTest} />
             <Route component={Error} />
           </Switch>
         </Router>
