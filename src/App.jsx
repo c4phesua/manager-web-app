@@ -29,7 +29,7 @@ function App() {
           <Switch>
             <CommonAuthenticatedRoute exact path={RouteConstants.root} component={HelloWorld} />
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
-            <CommonAuthenticatedRoute exact path={RouteConstants.logout} component={LogoutPage} />
+            <Route exact path={RouteConstants.logout} component={LogoutPage} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.adminTest} component={AdminPageTest} />
             <AuthorizedRoute role={ROLE.MANAGER} exact path={RouteConstants.managerTest} component={ManagerPageTest} />
             <Route component={Error} />
