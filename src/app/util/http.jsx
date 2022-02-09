@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notification from './Toast';
 
 const http = {
 
@@ -32,11 +33,12 @@ const http = {
     return new Promise((resolve, reject) => {
       axios(config)
         .then((response) => resolve(response))
-        .catch((error) => {
+        .catch(({response}) => {
           if (errorHandler) {
-            errorHandler(error.response);
+            errorHandler(response);
           } else {
-            console.log(error.response);
+            console.log(response);
+            Notification.pushError(response.data.error, response.status);
           }
         });
     })

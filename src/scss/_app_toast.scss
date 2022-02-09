@@ -1,0 +1,26 @@
+.toast-title {
+  word-wrap: break-word;
+}
+
+#toast-container > .toast {
+  max-width: 400px;
+}
+
+.toast-success {
+  background-color: #2BD92B;
+}
+
+.toast-error {
+  background-color: #e05169;
+}
+
+#toast-container > .toast-informing {
+  border-radius: 0.5rem;
+  min-height: 3.125rem;
+  max-height: 5.625rem;
+  min-width: 18.938rem;
+  max-width: 30rem;
+  background-color: #FAFDFF;
+  color: #000000;
+  background-image: none;
+}
