@@ -34,9 +34,9 @@ const http = {
         .then((response) => resolve(response))
         .catch((error) => {
           if (errorHandler) {
-            errorHandler();
+            errorHandler(error.response);
           } else {
-            console.log(error);
+            console.log(error.response);
           }
         });
     })
