@@ -10,7 +10,6 @@ import RouteConstants from './app/routes/RouteConstants';
 import LoginPage from './app/page/LoginPage';
 import LogoutPage from './app/page/LogoutPage';
 import UnauthenticatedRoute from './app/routes/UnauthenticatedRoute';
-import CommonAuthenticatedRoute from './app/routes/CommonAuthenticatedRoute';
 import Error from './app/page/Error';
 import AdminPageTest from './app/page/AdminPageTest';
 import ManagerPageTest from './app/page/ManagerPageTest';
@@ -27,7 +26,7 @@ function App() {
       <ThemeProvider>
         <Router>
           <Switch>
-            <CommonAuthenticatedRoute exact path={RouteConstants.root} component={HelloWorld} />
+            <AuthorizedRoute exact path={RouteConstants.root} component={HelloWorld} />
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
             <Route exact path={RouteConstants.logout} component={LogoutPage} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.adminTest} component={AdminPageTest} />
