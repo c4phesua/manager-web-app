@@ -18,8 +18,6 @@ import { ROLE } from './app/util/Constant';
 
 
 function App() {
-  console.log('parsed', JSON.parse(localStorage.getItem("User")));
-  console.log('un parsed', localStorage.getItem("User"));
 
   return (
     <div className="App">

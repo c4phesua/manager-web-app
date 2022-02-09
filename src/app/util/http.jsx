@@ -37,7 +37,6 @@ const http = {
           if (errorHandler) {
             errorHandler(response);
           } else {
-            console.log(response);
             Notification.pushError(response.data.error, response.status);
           }
         });
