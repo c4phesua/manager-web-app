@@ -15,13 +15,14 @@ import AdminPageTest from './app/page/AdminPageTest';
 import ManagerPageTest from './app/page/ManagerPageTest';
 import AuthorizedRoute from './app/routes/AuthorizedRoute';
 import { ROLE } from './app/util/Constant';
+import { theme } from './app/theme/theme';
 
 
 function App() {
 
   return (
     <div className="App">
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <Router>
           <Switch>
             <AuthorizedRoute exact path={RouteConstants.root} component={HelloWorld} />
