@@ -1,7 +1,7 @@
 import React from 'react';
 import { Backspace, Dashboard, Apartment, PhotoCamera, Loyalty, Receipt, Style, SupervisedUserCircle, Group, AccountCircle } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { ROLE } from '../util/Constant';
+import { PAGE_NAME, ROLE } from '../util/Constant';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import RouteConstants from '../routes/RouteConstants';
 import PageRouter from '../routes/PageRouter';
@@ -21,27 +21,27 @@ const LeftSideBar = ({ user }) => {
 
   const renderDashboard = () => {
     return (
-      <MenuItem active={isDashboard()} icon={<Dashboard />}>Bảng điều khiển <Link to={RouteConstants.root} /></MenuItem>
+      <MenuItem active={isDashboard()} icon={<Dashboard />}>{PAGE_NAME.DASHBOARD} <Link to={RouteConstants.root} /></MenuItem>
     );
   }
 
   const renderUserManagement = () => {
     return (
-      <SubMenu title="Quản lý nhân sự" icon={<Group />}>
+      <SubMenu title={PAGE_NAME.HR_MANAGEMENT} icon={<Group />}>
         {role === ROLE.ADMIN &&
-          <MenuItem active={isActive(RouteConstants.managers)} icon={<SupervisedUserCircle />}>Nhân viên quản lý <Link to={RouteConstants.managers} /></MenuItem>}
-        <MenuItem active={isActive(RouteConstants.consultants)} icon={<AccountCircle />}>Chuyên viên hỗ trợ<Link to={RouteConstants.consultants} /></MenuItem>
+          <MenuItem active={isActive(RouteConstants.managers)} icon={<SupervisedUserCircle />}>{PAGE_NAME.MANAGER} <Link to={RouteConstants.managers} /></MenuItem>}
+        <MenuItem active={isActive(RouteConstants.consultants)} icon={<AccountCircle />}>{PAGE_NAME.CONSULTANT}<Link to={RouteConstants.consultants} /></MenuItem>
       </SubMenu>
     );
   }
 
 
   const items = [
-    { name: 'Quản lý chi nhánh', icon: <Apartment />, link: RouteConstants.showrooms },
-    { name: 'Quản lý đặt lịch', icon: <Receipt />, link: RouteConstants.bookings },
-    role === ROLE.ADMIN && { name: 'Quản lý gói dịch vụ', icon: <PhotoCamera />, link: RouteConstants.packages },
-    role === ROLE.ADMIN && { name: 'Quản lý khuyến mãi', icon: <Loyalty />, link: RouteConstants.promotions },
-    role === ROLE.ADMIN && { name: 'Quản lý kiểu trang điểm', icon: <Style />, link: RouteConstants.styles },
+    { name: PAGE_NAME.SHOWROOM_MANAGEMENT, icon: <Apartment />, link: RouteConstants.showrooms },
+    { name: PAGE_NAME.BOOKING_MANAGEMENT, icon: <Receipt />, link: RouteConstants.bookings },
+    role === ROLE.ADMIN && { name: PAGE_NAME.PACKAGE_MANAGEMENT, icon: <PhotoCamera />, link: RouteConstants.packages },
+    role === ROLE.ADMIN && { name: PAGE_NAME.PROMOTION_MANAGEMENT, icon: <Loyalty />, link: RouteConstants.promotions },
+    role === ROLE.ADMIN && { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles },
   ].filter(item => item !== false);
 
 

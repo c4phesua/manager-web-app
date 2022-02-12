@@ -19,3 +19,15 @@ export const MESSAGE = {
   UNCONFIRMED_DENIED: (user) => `Tài khoản chưa được kích hoạt, vui lòng đến địa chỉ email: ${user.email} để kích hoạt tài khoản.`,
   DISABLE_DENIED: (user) => `Tài khoản : ${user.email} đã ngưng hoạt động.`,
 };
+
+export const PAGE_NAME = {
+  DASHBOARD: 'Bảng điều khiển',
+  HR_MANAGEMENT: 'Quản lý nhân sự',
+  MANAGER: 'Nhân viên quản lý',
+  CONSULTANT: 'Nhân viên hỗ trợ',
+  SHOWROOM_MANAGEMENT: 'Quản lý chi nhánh',
+  BOOKING_MANAGEMENT: 'Quản lý đặt lịch',
+  PACKAGE_MANAGEMENT: 'Quản lý gói dịch vụ',
+  PROMOTION_MANAGEMENT: 'Quản lý khuyến mãi',
+  STYLE_MANAGEMENT: 'Quản lý kiểu trang điểm',
+}
