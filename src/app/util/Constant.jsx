@@ -30,4 +30,5 @@ export const PAGE_NAME = {
   PACKAGE_MANAGEMENT: 'Quản lý gói dịch vụ',
   PROMOTION_MANAGEMENT: 'Quản lý khuyến mãi',
   STYLE_MANAGEMENT: 'Quản lý kiểu trang điểm',
+  PROFILE: 'Trang cá nhân',
 }
