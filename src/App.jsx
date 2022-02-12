@@ -16,6 +16,14 @@ import ManagerPageTest from './app/page/ManagerPageTest';
 import AuthorizedRoute from './app/routes/AuthorizedRoute';
 import { ROLE } from './app/util/Constant';
 import { theme } from './app/theme/theme';
+import Dashboard from './app/page/Dashboard';
+import ManagerManagement from './app/page/ManagerManagement';
+import Consultant from './app/page/ConsultantManagement';
+import BookingManagement from './app/page/BookingManagement';
+import ShowroomManagement from './app/page/ShowroomManagement';
+import PackageManagement from './app/page/PackageManagement';
+import PromotionManagement from './app/page/PromotionManagement';
+import StyleManagement from './app/page/StyleManagement';
 
 
 function App() {
@@ -25,11 +33,20 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <AuthorizedRoute exact path={RouteConstants.root} component={HelloWorld} />
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
-            <Route exact path={RouteConstants.logout} component={LogoutPage} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.adminTest} component={AdminPageTest} />
+            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
+            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
             <AuthorizedRoute role={ROLE.MANAGER} exact path={RouteConstants.managerTest} component={ManagerPageTest} />
+            <AuthorizedRoute exact path={RouteConstants.dashBoard} component={Dashboard} />
+            <AuthorizedRoute exact path={RouteConstants.root} component={Dashboard} />
+            <AuthorizedRoute exact path={RouteConstants.consultants} component={Consultant} />
+            <AuthorizedRoute exact path={RouteConstants.showrooms} component={ShowroomManagement} />
+            <AuthorizedRoute exact path={RouteConstants.bookings} component={BookingManagement}/>
+            <AuthorizedRoute exact path={RouteConstants.packages} component={PackageManagement}/>
+            <AuthorizedRoute exact path={RouteConstants.promotions} component={PromotionManagement}/>
+            <AuthorizedRoute exact path={RouteConstants.styles} component={StyleManagement}/>
+            <Route exact path={RouteConstants.logout} component={LogoutPage} />
             <Route component={Error} />
           </Switch>
         </Router>

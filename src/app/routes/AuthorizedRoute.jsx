@@ -16,7 +16,7 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
   const renderComponent = (props) => {
     return (
       <div className='d-flex'>
-        <LeftSideBar />
+        <LeftSideBar user={user} />
         <Component {...props} user={user}/>
       </div>
     );
