@@ -1,5 +1,7 @@
 @import "~toastr/toastr.scss";
+@import '~react-pro-sidebar/dist/scss/styles.scss';
 @import "/src/scss/app_toast";
+@import "/src/scss/app_sidebar";
 
 .App {
   text-align: center;
@@ -39,3 +41,5 @@
     transform: rotate(360deg);
   }
 }
+
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);

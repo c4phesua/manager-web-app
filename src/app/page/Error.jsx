@@ -2,6 +2,8 @@ import { Box, Button, Container, Typography } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
 import React from 'react';
 import { MESSAGE } from '../util/Constant';
+import PageRouter from '../routes/PageRouter';
+import RouteConstants from '../routes/RouteConstants';
 
 const Error = ({ message = MESSAGE.NOT_FOUND }) => {
 
@@ -9,7 +11,7 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
 
   const onBackButtonClick = (e) => {
     e.preventDefault();
-
+    PageRouter.redirect(RouteConstants.root);
   }
 
   return (
@@ -49,7 +51,7 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
             <Box sx={{ textAlign: 'center' }}>
               <img
                 alt="Under development"
-                src="/static/images/undraw_page_not_found_su7k.svg"
+                src="/static/images/not_found.png"
                 style={{
                   marginTop: 50,
                   display: 'inline-block',
