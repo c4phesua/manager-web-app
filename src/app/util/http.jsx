@@ -23,7 +23,6 @@ const http = {
   send(method, url, data, params, errorHandler) {
     let config = {
       headers: {
-        'Origin': 'http://localhost:5001',
         'Accept': 'application/json',
         'Authorization': localStorage.getItem("JWT"),
       },
