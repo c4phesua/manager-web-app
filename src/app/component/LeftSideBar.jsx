@@ -1,11 +1,10 @@
 import React from 'react';
-import { Backspace, Dashboard, Person, Apartment, PhotoCamera, Loyalty, Receipt, Style } from '@material-ui/icons';
+import { Backspace, Dashboard, Apartment, PhotoCamera, Loyalty, Receipt, Style, SupervisedUserCircle, Group, AccountCircle } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { ROLE } from '../util/Constant';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import RouteConstants from '../routes/RouteConstants';
 import PageRouter from '../routes/PageRouter';
-import Arrays from '../util/Arrays';
 
 
 const LeftSideBar = ({ user }) => {
@@ -28,27 +27,27 @@ const LeftSideBar = ({ user }) => {
 
   const renderUserManagement = () => {
     return (
-      <SubMenu title="Quản lý nhân sự" icon={<Person />}>
-        {role === ROLE.ADMIN && 
-        <MenuItem active={isActive(RouteConstants.managers)} icon={<Person />}>Nhân viên quản lý <Link to={RouteConstants.managers}/></MenuItem>}
-        <MenuItem active={isActive(RouteConstants.consultants)} icon={<Person />}>Chuyên viên hỗ trợ<Link to={RouteConstants.consultants}/></MenuItem>
+      <SubMenu title="Quản lý nhân sự" icon={<Group />}>
+        {role === ROLE.ADMIN &&
+          <MenuItem active={isActive(RouteConstants.managers)} icon={<SupervisedUserCircle />}>Nhân viên quản lý <Link to={RouteConstants.managers} /></MenuItem>}
+        <MenuItem active={isActive(RouteConstants.consultants)} icon={<AccountCircle />}>Chuyên viên hỗ trợ<Link to={RouteConstants.consultants} /></MenuItem>
       </SubMenu>
     );
   }
 
 
   const items = [
-    {name: 'Quản lý chi nhánh', icon: <Apartment />, link: RouteConstants.showrooms},
-    {name: 'Quản lý đặt lịch', icon: <Receipt />, link: RouteConstants.bookings},
-    role === ROLE.ADMIN && {name: 'Quản lý gói dịch vụ', icon: <PhotoCamera />, link: RouteConstants.packages},
-    role === ROLE.ADMIN && {name: 'Quản lý khuyến mãi', icon: <Loyalty />, link: RouteConstants.promotions},
-    role === ROLE.ADMIN && {name: 'Quản lý kiểu trang điểm', icon: <Style />, link: RouteConstants.styles},
+    { name: 'Quản lý chi nhánh', icon: <Apartment />, link: RouteConstants.showrooms },
+    { name: 'Quản lý đặt lịch', icon: <Receipt />, link: RouteConstants.bookings },
+    role === ROLE.ADMIN && { name: 'Quản lý gói dịch vụ', icon: <PhotoCamera />, link: RouteConstants.packages },
+    role === ROLE.ADMIN && { name: 'Quản lý khuyến mãi', icon: <Loyalty />, link: RouteConstants.promotions },
+    role === ROLE.ADMIN && { name: 'Quản lý kiểu trang điểm', icon: <Style />, link: RouteConstants.styles },
   ].filter(item => item !== false);
 
 
   const renderMenuItem = (item) => {
     return (
-      <MenuItem key={item.link} icon={item.icon} active={isActive(item.link)}>{item.name} <Link to={item.link}/></MenuItem>
+      <MenuItem key={item.link} icon={item.icon} active={isActive(item.link)}>{item.name} <Link to={item.link} /></MenuItem>
     )
   }
 
@@ -70,7 +69,9 @@ const LeftSideBar = ({ user }) => {
     <div className='left-side-bar'>
       <ProSidebar>
         <SidebarHeader>
-          Logo nằm đâu đó ở đây
+          <Menu iconShape="square">
+            <MenuItem icon={<SupervisedUserCircle />}>Hệ thống quản trị <Link to={RouteConstants.root} /></MenuItem>
+          </Menu>
         </SidebarHeader>
         <SidebarContent>
           {renderSideBarContent()}
