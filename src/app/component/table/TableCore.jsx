@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableCell, Paper, TableContainer } from '@material-ui/core';
 import { next } from '../../util/Count';
 
 class TableCore extends React.Component {
@@ -30,16 +30,18 @@ class TableCore extends React.Component {
       <TableCell key={next()} className={header.className}>{header.headerCaption}</TableCell>);
     return (
       <>
-        <Table responsive hover className={`${className || 'table'}`}>
-          <TableHead>
-            <TableRow>
-              {headers}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.renderRows(headers, rows)}
-          </TableBody>
-        </Table>
+        <TableContainer component={Paper}>
+          <Table responsive hover className={`${className || 'table'}`} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                {headers}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.renderRows(headers, rows)}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </>
     );
   }

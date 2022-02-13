@@ -32,3 +32,14 @@ export const PAGE_NAME = {
   STYLE_MANAGEMENT: 'Quản lý kiểu trang điểm',
   PROFILE: 'Trang cá nhân',
 }
+
+export const USER_STATUS = {
+  ENABLE: 'ENABLE',
+  DISABLE: 'DISABLE',
+  UNCONFIRMED: 'UNCONFIRMED',
+}
+
+export const USER_GENDER = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+}

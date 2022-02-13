@@ -1,34 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TableCore from './TableCore';
-import Service from '../../util/Services';
+import DataLoader from './DataLoader';
 
 const DataTable = ({entity, size, additionalParams, ...props}) => {
-
-  const [data, setData] = useState();
-  const [page, setPage] = useState(0);
-  const [searchText, setSearchText] = useState();
-
-  const params = {
-    page,
-    size,
-    searchText,
-    ...additionalParams //status, showroomId, etc
-  }
-
-  console.log(params);
-
-  const searchEntity = () => {
-    Service.search(entity, params)
-      .then(({data}) => setData(data.content));
-  }
-
-  const refreshData = () => {
-    searchEntity();
-  }
-
-  useEffect(() => {
-    refreshData();
-  }, []);
 
   const renderData = (data) => {
     console.log(props);
@@ -37,9 +11,15 @@ const DataTable = ({entity, size, additionalParams, ...props}) => {
     );
   }
 
-  console.log(data);
-
-  return data ? renderData(data) : null;
+  return (
+  <DataLoader 
+    renderData={renderData}
+    entity={entity} 
+    size={size} 
+    additionalParams={additionalParams} 
+    {...props} 
+    />
+  );
 }
 
 export default DataTable;
