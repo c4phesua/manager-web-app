@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import LeftSideBar from '../component/LeftSideBar';
@@ -17,7 +18,9 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
     return (
       <div className='d-flex'>
         <LeftSideBar user={user} />
-        <Component {...props} user={user}/>
+        <Container maxWidth="xl">
+          <Component {...props} user={user} />
+        </Container>
       </div>
     );
   };
@@ -25,7 +28,7 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
   const decideRoute = (props) => {
     if (isLoggedIn) {
       if (user.status === STATUS.UNCONFIRMED) {
-        return (<Error message={MESSAGE.UNCONFIRMED_DENIED(user)} />); 
+        return (<Error message={MESSAGE.UNCONFIRMED_DENIED(user)} />);
       }
       if (user.role === ROLE.CONSULTANT || user.role === ROLE.CUSTOMER) {
         return (<Error message={MESSAGE.USER_DENIED} />);
@@ -34,7 +37,7 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
         return renderComponent(props);
       } else if (role === user.role) {
         return renderComponent(props);
-      } 
+      }
       return (<Error message={MESSAGE.PERMISSION_DENIED} />);
     }
     return (<Redirect to={{ pathname: RouteConstants.logout, state: { from: props.location } }} />)

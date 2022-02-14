@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableHead, TableBody, TableRow, TableCell, Paper, TableContainer } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableCell, Paper, TableContainer, Box } from '@material-ui/core';
 import { next } from '../../util/Count';
 
 class TableCore extends React.Component {
@@ -24,7 +24,7 @@ class TableCore extends React.Component {
       const cols = columnMapping.map((col) => (
         <TableCell className={col.className} key={next()}>{col.decorate(col.fieldName, row)}</TableCell>
       ));
-      return <TableRow key={next()}>{cols}</TableRow>;
+      return <TableRow hover key={next()}>{cols}</TableRow>;
     });
     const headers = columnMapping.map((header) =>
       <TableCell key={next()} className={header.className}>{header.headerCaption}</TableCell>);
