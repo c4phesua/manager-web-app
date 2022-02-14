@@ -3,7 +3,7 @@ import { Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Service from '../../util/Services';
 
-const DataLoader = ({ entity, size, additionalParams, renderData, useSearchText = false, ...props }) => {
+const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, useSearchText = false, ...props }) => {
 
   const [data, setData] = useState();
   const [page, setPage] = useState(0);
@@ -41,7 +41,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, useSearchText 
 
   const renderSearchText = () => {
     return (
-      <TextField 
+      <TextField
         type="text"
         id='search-input'
         spellCheck="false"
@@ -64,7 +64,14 @@ const DataLoader = ({ entity, size, additionalParams, renderData, useSearchText 
 
   return data ? (
     <>
-      {useSearchText && renderSearchText()}
+      <div className='row'>
+        <div className='col'>
+          {useSearchText && renderSearchText()}
+        </div>
+        {renderButton && <div className='col-sm col-sm-auto'>
+          {renderButton()}
+        </div>}
+      </div>
       {renderData(data)}
     </>
   ) : null;
