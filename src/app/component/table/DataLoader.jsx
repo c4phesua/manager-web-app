@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TableCore from './TableCore';
 import Service from '../../util/Services';
 
-const DataTable = ({entity, size, additionalParams, renderData, ...props}) => {
+const DataLoader = ({entity, size, additionalParams, renderData, ...props}) => {
 
   const [data, setData] = useState();
   const [page, setPage] = useState(0);
@@ -28,9 +28,7 @@ const DataTable = ({entity, size, additionalParams, renderData, ...props}) => {
     refreshData();
   }, []);
 
-  console.log(data);
-
   return data ? renderData(data) : null;
 }
 
-export default DataTable;
+export default DataLoader;
