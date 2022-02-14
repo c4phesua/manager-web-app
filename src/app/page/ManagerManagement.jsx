@@ -21,7 +21,7 @@ const ManagerManagement = (props) => {
   return (
     <div>
       manager
-      <DataTable entity="manager" size={5} columnMapping={columnMapping} />
+      <DataTable useSearchText entity="manager" size={5} columnMapping={columnMapping} />
     </div>
   );
 }

@@ -1,8 +1,9 @@
+import { InputAdornment, TextField } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
-import TableCore from './TableCore';
 import Service from '../../util/Services';
 
-const DataLoader = ({entity, size, additionalParams, renderData, ...props}) => {
+const DataLoader = ({ entity, size, additionalParams, renderData, useSearchText = false, ...props }) => {
 
   const [data, setData] = useState();
   const [page, setPage] = useState(0);
@@ -17,7 +18,7 @@ const DataLoader = ({entity, size, additionalParams, renderData, ...props}) => {
 
   const searchEntity = () => {
     Service.search(entity, params)
-      .then(({data}) => setData(data.content));
+      .then(({ data }) => setData(data.content));
   }
 
   const refreshData = () => {
@@ -28,7 +29,45 @@ const DataLoader = ({entity, size, additionalParams, renderData, ...props}) => {
     refreshData();
   }, []);
 
-  return data ? renderData(data) : null;
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      refreshData();
+    }
+  }
+
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+  }
+
+  const renderSearchText = () => {
+    return (
+      <TextField 
+        type="text"
+        id='search-input'
+        spellCheck="false"
+        variant="outlined"
+        size="small"
+        placeholder='Tìm kiếm'
+        fullWidth
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
+        }}
+      />
+    )
+  }
+
+  return data ? (
+    <>
+      {useSearchText && renderSearchText()}
+      {renderData(data)}
+    </>
+  ) : null;
 }
 
 export default DataLoader;
