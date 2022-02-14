@@ -12,7 +12,7 @@ const Consultant = (props) => {
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id'),
     new TableColumnDataMapping('Họ', 'firstname'),
-    new TableColumnDataMapping('Tên', 'firstname'),
+    new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Email', 'email'),
@@ -27,7 +27,7 @@ const Consultant = (props) => {
   return (
     <div>
       consultant
-      <DataTable entity="consultant" additionalParams={additionalParams} size={5} columnMapping={columnMapping} />
+      <DataTable useSearchText entity="consultant" additionalParams={additionalParams} size={5} columnMapping={columnMapping} />
 
     </div>
   );
