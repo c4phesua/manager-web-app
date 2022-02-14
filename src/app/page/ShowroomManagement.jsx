@@ -19,7 +19,7 @@ const ShowroomManagement = (props) => {
   return (
     <div>
       showroom
-      <DataTable entity="showroom" size={5} columnMapping={columnMapping} />
+      <DataTable useSearchText entity="showroom" size={5} columnMapping={columnMapping} />
 
     </div>
   );
