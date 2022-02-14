@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
@@ -41,7 +41,9 @@ const ManagerManagement = (props) => {
 
   return (
     <div>
-      manager
+      <Typography variant='h3' align='left'>
+        {PAGE_NAME.MANAGER}
+      </Typography>
       <DataTable renderButton={renderAddManagerButton} useSearchText entity="manager" size={5} columnMapping={columnMapping} />
       <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />
     </div>

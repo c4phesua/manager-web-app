@@ -1,4 +1,4 @@
-import { InputAdornment, TextField } from '@material-ui/core';
+import { Card, InputAdornment, Paper, TextField } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Service from '../../util/Services';
@@ -64,7 +64,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
 
   return data ? (
     <>
-      <div className='row'>
+      <div className='row mb-3'>
         <div className='col'>
           {useSearchText && renderSearchText()}
         </div>
