@@ -45,7 +45,7 @@ const ManagerManagement = (props) => {
         {PAGE_NAME.MANAGER}
       </Typography>
       <DataTable renderButton={renderAddManagerButton} useSearchText entity="manager" size={5} columnMapping={columnMapping} />
-      <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />
+      {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>
   );
 }
