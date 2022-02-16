@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogContent } from '@material-ui/core';
+import { Button, DialogActions, DialogContent, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
@@ -22,7 +22,8 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
     <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open}  {...props}>
       <form onSubmit={onDialogSubmit}>
         <DialogContent>
-          Hello
+          <Typography variant='h6'>Họ</Typography>
+          <TextField variant='outlined' size='small'/>
         </DialogContent>
         <DialogActions>
           <Button type='submit' color='inherit' variant='contained' onClick={handleClose}>Huỷ</Button>
