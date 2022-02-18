@@ -1,30 +1,45 @@
 import { Button, DialogActions, DialogContent, TextField, Typography } from '@material-ui/core';
-import { Label, Form } from 'reactstrap';
+import { Label, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
+import { getInitialUserForm } from './NewUserHelper';
 
 const CreateManagerDialog = ({ open, handleClose, ...props }) => {
 
-  const [firstname, setFirstName] = useState();
-  const [lastname, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [address, setAddress] = useState();
-  const [gender, setGender] = useState();
-  const [birthday, setBirtdDay] = useState();
+  const [newManager, setNewManager] = useState(getInitialUserForm());
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
-    alert('hello')
+    console.log('new manager', newManager);
+  }
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    console.log(name)
+    setNewManager({
+      ...newManager,
+      [name]: value,
+    });
   }
 
   return (
     <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open}  {...props}>
       <Form onSubmit={onDialogSubmit}>
         <DialogContent>
-          <Typography variant='h6'>Họ</Typography>
-          <TextField name='' variant='outlined' size='small'/>
+          <FormGroup>
+            <Label for='firstname' >Họ</Label>
+            <Input name='firstname' onChange={handleOnChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for='lastname' >Tên</Label>
+            <Input name='lastname' onChange={handleOnChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for='email'>Email</Label>
+            <Input name='email' onChange={handleOnChange} />
+          </FormGroup>
         </DialogContent>
         <DialogActions>
           <Button type='submit' color='inherit' variant='contained' onClick={handleClose}>Huỷ</Button>
