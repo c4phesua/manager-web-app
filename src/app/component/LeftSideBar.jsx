@@ -5,6 +5,7 @@ import { PAGE_NAME, ROLE } from '../util/Constant';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import RouteConstants from '../routes/RouteConstants';
 import PageRouter from '../routes/PageRouter';
+import Arrays from '../util/Arrays';
 
 
 const LeftSideBar = ({ user }) => {
@@ -39,11 +40,11 @@ const LeftSideBar = ({ user }) => {
   const items = [
     { name: PAGE_NAME.SHOWROOM_MANAGEMENT, icon: <Apartment />, link: RouteConstants.showrooms },
     { name: PAGE_NAME.BOOKING_MANAGEMENT, icon: <Receipt />, link: RouteConstants.bookings },
-    role === ROLE.ADMIN && { name: PAGE_NAME.PACKAGE_MANAGEMENT, icon: <PhotoCamera />, link: RouteConstants.packages },
-    role === ROLE.ADMIN && { name: PAGE_NAME.PROMOTION_MANAGEMENT, icon: <Loyalty />, link: RouteConstants.promotions },
-    role === ROLE.ADMIN && { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles },
+    ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.PACKAGE_MANAGEMENT, icon: <PhotoCamera />, link: RouteConstants.packages }) ,
+    ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.PROMOTION_MANAGEMENT, icon: <Loyalty />, link: RouteConstants.promotions }),
+    ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles }),
     { name: PAGE_NAME.PROFILE, icon: <Person />, link: RouteConstants.profile },
-  ].filter(item => item !== false);
+  ];
 
 
   const renderMenuItem = (item) => {

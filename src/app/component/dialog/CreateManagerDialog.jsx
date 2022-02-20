@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogContent, TextField, Typography } from '@material-ui/core';
+import { Button, DialogActions, DialogContent } from '@material-ui/core';
 import { Label, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
   }
 
   return (
-    <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open}  {...props}>
+    <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open} handleClose={handleClose} {...props}>
       <Form onSubmit={onDialogSubmit}>
         <DialogContent>
           <FormGroup>
@@ -42,7 +42,7 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
           </FormGroup>
         </DialogContent>
         <DialogActions>
-          <Button type='submit' color='inherit' variant='contained' onClick={handleClose}>Huỷ</Button>
+          <Button color='inherit' variant='contained' onClick={handleClose}>Huỷ</Button>
           <Button type='submit' color='primary' variant='contained'>Tạo</Button>
         </DialogActions>
       </Form>
