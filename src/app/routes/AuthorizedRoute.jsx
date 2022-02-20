@@ -2,6 +2,7 @@ import { Container } from '@material-ui/core';
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import LeftSideBar from '../component/LeftSideBar';
+import TopNavBar from '../component/TopNavBar';
 import MAuth from '../model/MAuth';
 import Error from '../page/Error';
 import { MESSAGE, ROLE, STATUS } from '../util/Constant';
@@ -18,9 +19,12 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
     return (
       <div className='d-flex'>
         <LeftSideBar user={user} />
-        <Container maxWidth="xl">
-          <Component {...props} user={user} />
-        </Container>
+        <div className='flex-grow-1'>
+          <TopNavBar />
+          <Container maxWidth={false}>
+            <Component {...props} user={user} />
+          </Container>
+        </div>
       </div>
     );
   };
