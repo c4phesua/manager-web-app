@@ -5,6 +5,7 @@ import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { PAGE_NAME } from '../util/Constant';
+import { next } from '../util/Count';
 
 const ManagerManagement = (props) => {
 
@@ -15,7 +16,7 @@ const ManagerManagement = (props) => {
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id'),
     new TableColumnDataMapping('Họ', 'firstname'),
-    new TableColumnDataMapping('Tên', 'firstname'),
+    new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Email', 'email'),
@@ -44,7 +45,7 @@ const ManagerManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.MANAGER}
       </Typography>
-      <DataTable renderButton={renderAddManagerButton} useSearchText entity="manager" size={5} columnMapping={columnMapping} />
+      <DataTable key={next()} renderButton={renderAddManagerButton} useSearchText entity="manager" size={50} columnMapping={columnMapping} />
       {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>
   );

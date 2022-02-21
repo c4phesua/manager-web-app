@@ -16,6 +16,10 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
     console.log('new manager', newManager);
     Services.createManager(newManager).then((response) => {
       console.log(response);
+      if(onCreateSuccess) {
+        console.log('oncreatesuccess');
+        onCreateSuccess();
+      }
       Notification.pushSuccess('created');
       handleClose();
     })
