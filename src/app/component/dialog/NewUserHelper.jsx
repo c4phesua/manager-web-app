@@ -1,3 +1,5 @@
+import { USER_GENDER } from "../../util/Constant"
+
 export const getInitialUserForm = () => {
   return {
     firstname: '',
@@ -5,7 +7,7 @@ export const getInitialUserForm = () => {
     email: '',
     phoneNumber: '',
     address: '',
-    gender: '',
+    gender: USER_GENDER.MALE,
     birthday: ''
   }
 }

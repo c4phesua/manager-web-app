@@ -40,6 +40,18 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
             <Label for='email'>Email</Label>
             <Input name='email' onChange={handleOnChange} />
           </FormGroup>
+          <FormGroup>
+            <Label for='phoneNumber'>Số điện thoại</Label>
+            <Input name='phoneNumber' onChange={handleOnChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for='address'>Địa chỉ</Label>
+            <Input name='address' onChange={handleOnChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for='birthday'>Ngày sinh</Label>
+            <Input name='birthday' onChange={handleOnChange} />
+          </FormGroup>
         </DialogContent>
         <DialogActions>
           <Button color='inherit' variant='contained' onClick={handleClose}>Huỷ</Button>
