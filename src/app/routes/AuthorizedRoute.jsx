@@ -20,7 +20,7 @@ const AuthorizedRoute = ({ component: Component, role = ROLE.COMMON_AUTHENTICATE
       <div className='d-flex'>
         <LeftSideBar user={user} />
         <div className='flex-grow-1'>
-          <TopNavBar />
+          <TopNavBar user={user}/>
           <Container maxWidth={false}>
             <Component {...props} user={user} />
           </Container>

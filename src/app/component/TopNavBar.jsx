@@ -1,13 +1,11 @@
-import { IconButton, Toolbar } from '@material-ui/core';
-import { Notifications } from '@material-ui/icons'
+import { Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 
-const TopNavBar = (props) => {
+const TopNavBar = ({user}) => {
   return (
     <Toolbar>
-      <IconButton color={"inherit"} size={"small"}>
-        <Notifications />
-      </IconButton>
+      <div className='flex-grow-1'></div>
+      {user && <Typography variant='h5'>Xin chào, {user.firstname} {user.lastname}</Typography>}
     </Toolbar>
   );
 }
