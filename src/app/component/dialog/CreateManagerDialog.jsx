@@ -5,7 +5,7 @@ import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
 import { getInitialUserForm } from './NewUserHelper';
 
-const CreateManagerDialog = ({ open, handleClose, ...props }) => {
+const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
   const [newManager, setNewManager] = useState(getInitialUserForm());
 
@@ -17,7 +17,6 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
   const handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    console.log(name)
     setNewManager({
       ...newManager,
       [name]: value,
@@ -50,7 +49,7 @@ const CreateManagerDialog = ({ open, handleClose, ...props }) => {
           </FormGroup>
           <FormGroup>
             <Label for='birthday'>Ngày sinh</Label>
-            <Input name='birthday' onChange={handleOnChange} />
+            <Input type='date' name='birthday' onChange={handleOnChange} />
           </FormGroup>
         </DialogContent>
         <DialogActions>
