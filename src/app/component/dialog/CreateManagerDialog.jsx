@@ -52,7 +52,7 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
           </FormGroup>
           <FormGroup>
             <Label for='phoneNumber'>Số điện thoại</Label>
-            <Input name='phoneNumber' onChange={handleOnChange} />
+            <Input name='phoneNumber' type='number' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='address'>Địa chỉ</Label>
