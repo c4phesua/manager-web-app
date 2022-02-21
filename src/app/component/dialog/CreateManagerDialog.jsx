@@ -4,6 +4,8 @@ import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
 import { getInitialUserForm } from './NewUserHelper';
+import Services from '../../util/Services';
+import Notification from '../../util/Toast';
 
 const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
@@ -12,6 +14,11 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
   const onDialogSubmit = (e) => {
     e.preventDefault();
     console.log('new manager', newManager);
+    Services.createManager(newManager).then((response) => {
+      console.log(response);
+      Notification.pushSuccess('created');
+      handleClose();
+    })
   }
 
   const handleOnChange = (e) => {
