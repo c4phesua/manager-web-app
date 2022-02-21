@@ -40,27 +40,27 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
         <DialogContent>
           <FormGroup>
             <Label for='firstname' >Họ</Label>
-            <Input name='firstname' onChange={handleOnChange} />
+            <Input required name='firstname' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='lastname' >Tên</Label>
-            <Input name='lastname' onChange={handleOnChange} />
+            <Input required name='lastname' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='email'>Email</Label>
-            <Input name='email' onChange={handleOnChange} />
+            <Input required name='email' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='phoneNumber'>Số điện thoại</Label>
-            <Input name='phoneNumber' type='number' onChange={handleOnChange} />
+            <Input required name='phoneNumber' type='number' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='address'>Địa chỉ</Label>
-            <Input name='address' onChange={handleOnChange} />
+            <Input required name='address' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='birthday'>Ngày sinh</Label>
-            <Input type='date' name='birthday' onChange={handleOnChange} />
+            <Input required type='date' name='birthday' onChange={handleOnChange} />
           </FormGroup>
         </DialogContent>
         <DialogActions>
