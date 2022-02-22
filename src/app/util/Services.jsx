@@ -16,6 +16,10 @@ const Services = {
 
   createManager(manager) {
     return http.post(URL_PERFIX + Apis.manager, manager);
+  },
+
+  createConsultant(consultant) {
+    return http.post(URL_PERFIX + Apis.consultant, consultant);
   }
 };
 

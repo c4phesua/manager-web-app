@@ -1,11 +1,14 @@
 import React from 'react';
-import { PAGE_NAME } from '../util/Constant';
+import { PAGE_NAME, ROLE } from '../util/Constant';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import DataTable from '../component/table/DataTable';
 import { Typography } from '@material-ui/core';
+import Error from './Error';
 
 
-const Consultant = (props) => {
+const ConsultantManagement = (props) => {
+
+  const {user} = props;
 
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
@@ -21,7 +24,13 @@ const Consultant = (props) => {
   ]
 
   const additionalParams = {
-    showroomId: '',
+    showroomId: user?.showroomId || '',
+  }
+
+  if (user.role === ROLE.MANAGER && !user.showroomId) {
+    return (
+      <Error message='Bạn hiện tại chưa quản lý chi nhánh nào để có thể nhìn thấy các nhân viên hỗ trợ.' />
+    )
   }
 
   return (
@@ -34,4 +43,4 @@ const Consultant = (props) => {
   );
 }
 
-export default Consultant;
+export default ConsultantManagement;

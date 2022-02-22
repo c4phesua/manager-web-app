@@ -7,13 +7,13 @@ import { getInitialUserForm } from './NewUserHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 
-const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
+const CreateConsultantDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
-  const [newManager, setNewManager] = useState(getInitialUserForm());
+  const [newConsultant, setNewConsultant] = useState(getInitialUserForm());
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
-    Services.createManager(newManager).then((response) => {
+    Services.createConsultant(newConsultant).then((response) => {
       console.log(response);
       if(onCreateSuccess) {
         console.log('oncreatesuccess');
@@ -27,14 +27,14 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
   const handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    setNewManager({
-      ...newManager,
+    setNewConsultant({
+      ...newConsultant,
       [name]: value,
     });
   }
 
   return (
-    <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open} handleClose={handleClose} {...props}>
+    <CloseableDialogComponent title='Thêm nhân viên hỗ trợ' maxWidth='lg' isOpen={open} handleClose={handleClose} {...props}>
       <Form onSubmit={onDialogSubmit}>
         <DialogContent>
           <FormGroup>
@@ -72,4 +72,4 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
   );
 }
 
-export default CreateManagerDialog;
+export default CreateConsultantDialog;
