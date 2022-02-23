@@ -1,9 +1,11 @@
-import React from 'react';
-import { PAGE_NAME, ROLE } from '../util/Constant';
+import React, { useState } from 'react';
+import { MESSAGE, PAGE_NAME, ROLE } from '../util/Constant';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import DataTable from '../component/table/DataTable';
-import { Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import Error from './Error';
+import CreateConsultantDialog from '../component/dialog/CreateConsultantDialog';
+import { next } from '../util/Count';
 
 
 const ConsultantManagement = (props) => {
@@ -11,6 +13,8 @@ const ConsultantManagement = (props) => {
   const {user} = props;
 
   document.title = PAGE_NAME.HR_MANAGEMENT;
+
+  const [createConsultantDialogOpen, setCreateConsultantDialogOpen] = useState(false);
 
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id'),
@@ -29,8 +33,24 @@ const ConsultantManagement = (props) => {
 
   if (user.role === ROLE.MANAGER && !user.showroomId) {
     return (
-      <Error message='Bạn hiện tại chưa quản lý chi nhánh nào để có thể nhìn thấy các nhân viên hỗ trợ.' />
+      <Error message={MESSAGE.SHOWROOM_UNASSIGNED} />
     )
+  }
+
+  const renderAddConsultantButton = () => {
+    return (
+      <Button color='primary' variant="contained" onClick={handleOpenCreateConsultantDialog}>
+        Thêm nhân viên
+      </Button>
+    )
+  }
+
+  const handleCloseCreateConsultantDialog = () => {
+    setCreateConsultantDialogOpen(false);
+  }
+
+  const handleOpenCreateConsultantDialog = () => {
+    setCreateConsultantDialogOpen(true);
   }
 
   return (
@@ -38,7 +58,8 @@ const ConsultantManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.CONSULTANT}
       </Typography>
-      <DataTable useSearchText entity="consultant" additionalParams={additionalParams} size={5} columnMapping={columnMapping} />
+      <DataTable key={next()} renderButton={renderAddConsultantButton} useSearchText entity="consultant" additionalParams={additionalParams} size={10} columnMapping={columnMapping} />
+      {createConsultantDialogOpen && <CreateConsultantDialog handleClose={handleCloseCreateConsultantDialog} open={createConsultantDialogOpen} />}
     </div>
   );
 }

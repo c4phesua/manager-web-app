@@ -16,6 +16,7 @@ export const MESSAGE = {
   NOT_FOUND: 'Không tìm thấy trang',
   PERMISSION_DENIED: 'Bạn không có quyền truy cập vào trang này.',
   USER_DENIED: 'Chỉ có Admin và người quản lý showroom mới có thể đăng nhập vào trang web này.',
+  SHOWROOM_UNASSIGNED: 'Bạn hiện tại chưa quản lý chi nhánh nào để có thể nhìn thấy các nhân viên hỗ trợ.',
   UNCONFIRMED_DENIED: (user) => `Tài khoản chưa được kích hoạt, vui lòng đến địa chỉ email: ${user.email} để kích hoạt tài khoản.`,
   DISABLE_DENIED: (user) => `Tài khoản : ${user.email} đã ngưng hoạt động.`,
 };
