@@ -40,14 +40,6 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
             >
               {message}
             </Typography>
-            <Typography
-              align="center"
-              color="textPrimary"
-              variant="subtitle2"
-            >
-              You either tried some shady route or you came here by mistake.
-              Whichever it is, try using the navigation
-            </Typography>
             <Box sx={{ textAlign: 'center' }}>
               <img
                 alt="Under development"
@@ -67,7 +59,7 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
               variant="contained"
               onClick={onBackButtonClick}
             >
-              Go back to dashboard
+              Quay về trang chủ
             </Button>
           </Box>
         </Container>
