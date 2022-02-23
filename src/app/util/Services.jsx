@@ -20,6 +20,10 @@ const Services = {
 
   createConsultant(consultant) {
     return http.post(URL_PERFIX + Apis.consultant, consultant);
+  },
+
+  createShowroom(showroom) {
+    return http.post(URL_PERFIX + Apis.showroom, showroom);
   }
 };
 

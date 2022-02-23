@@ -11,3 +11,14 @@ export const getInitialUserForm = () => {
     birthday: ''
   }
 }
+
+export const getIntitialShowroomForm = () => {
+  return {
+    name: '',
+    phoneNumber: '',
+    address: '',
+    description: '',
+    avatar: '',
+    managerId: '',
+  }
+}

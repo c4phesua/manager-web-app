@@ -1,12 +1,18 @@
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import CreateShowroomDialog from '../component/dialog/CreateShowroomDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { PAGE_NAME, ROLE } from '../util/Constant';
+import { next } from '../util/Count';
 import Error from './Error';
 
 const ShowroomManagement = (props) => {
 
   document.title = PAGE_NAME.SHOWROOM_MANAGEMENT;
+
+  const [createShowroomDialogOpen, setCreateShowroomDialogOpen] = useState(false);
+
 
   const { user } = props;
 
@@ -33,11 +39,29 @@ const ShowroomManagement = (props) => {
     )
   }
 
+  const handleCloseCreateShowroomDialog = () => {
+    setCreateShowroomDialogOpen(false);
+  }
+
+  const handleOpenCreateManagerDialog = () => {
+    setCreateShowroomDialogOpen(true);
+  }
+
+  const renderCreateShowroomButton = () => {
+    return (
+      <Button color='primary' variant="contained" onClick={handleOpenCreateManagerDialog}>
+        Thêm chi nhánh
+      </Button>
+    )
+  }
+
   return (
     <div>
-      showroom
-      <DataTable useSearchText entity="showroom" size={5} columnMapping={columnMapping} />
-
+      <Typography variant='h3' align='left'>
+        {PAGE_NAME.SHOWROOM_MANAGEMENT}
+      </Typography>
+      <DataTable key={next()} renderButton={renderCreateShowroomButton} useSearchText entity="showroom" size={5} columnMapping={columnMapping} />
+      {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen}/>}
     </div>
   );
 }
