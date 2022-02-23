@@ -23,7 +23,7 @@ const ConsultantManagement = (props) => {
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Email', 'email'),
-    new TableColumnDataMapping('Giới tính', 'gender'),
+    new TableColumnDataMapping('Địa chỉ', 'address'),
     new TableColumnDataMapping('Trạng thái', 'status'),
   ]
 
