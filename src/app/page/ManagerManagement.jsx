@@ -45,9 +45,7 @@ const ManagerManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.MANAGER}
       </Typography>
-      <div className='data-table'>
-        <DataTable key={next()} renderButton={renderAddManagerButton} useSearchText entity="manager" size={100} columnMapping={columnMapping} />
-      </div>
+      <DataTable key={next()} renderButton={renderAddManagerButton} useSearchText entity="manager" size={100} columnMapping={columnMapping} />
       {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>
   );
