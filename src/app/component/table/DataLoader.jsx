@@ -1,7 +1,8 @@
-import { Card, InputAdornment, Paper, TextField } from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+import { Card, IconButton, InputAdornment, Paper, TextField } from '@material-ui/core';
+import { Filter, Filter2, FilterList, Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Service from '../../util/Services';
+import DropDown from '../DropDown';
 
 const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, useSearchText = false, ...props }) => {
 
@@ -39,6 +40,27 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
     setSearchText(e.target.value);
   }
 
+
+  const renderOpenFilterButton = (props) => {
+    return (
+      <InputAdornment position="end" >
+        <IconButton {...props}>
+          <FilterList />
+        </IconButton>
+      </InputAdornment>
+    )
+  }
+
+  const renderFilter = () => {
+    return (
+      <DropDown renderAnchorElement={renderOpenFilterButton}>
+        <div className="top-right-dropdown">
+          <div>clicked</div>
+        </div>
+      </DropDown>
+    )
+  }
+
   const renderSearchText = () => {
     return (
       <TextField
@@ -57,6 +79,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
               <Search />
             </InputAdornment>
           ),
+          endAdornment: renderFilter()
         }}
       />
     )
