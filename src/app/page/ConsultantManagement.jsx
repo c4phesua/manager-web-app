@@ -38,11 +38,14 @@ const ConsultantManagement = (props) => {
   }
 
   const renderAddConsultantButton = () => {
+    if (user.role !== ROLE.MANAGER) {
+      return null;
+    }
     return (
       <Button color='primary' variant="contained" onClick={handleOpenCreateConsultantDialog}>
         Thêm nhân viên
       </Button>
-    )
+    );
   }
 
   const handleCloseCreateConsultantDialog = () => {

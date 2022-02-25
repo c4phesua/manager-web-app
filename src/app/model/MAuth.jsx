@@ -7,12 +7,8 @@ const MAuth = {
       localStorage.setItem("JWT", `Bearer ${data.accessToken}`);
     })
     .then(() => {
-      Services.getMe().then(({ data }) => {
-        localStorage.setItem("User", JSON.stringify(data));
-      })
-      .then(() => {
-        PageRouter.redirect("/");
-      })
+      this.getMe();
+      PageRouter.redirect("/");
     })
 
   },
@@ -21,7 +17,12 @@ const MAuth = {
   },
   isLoggedIn() {
     return localStorage.getItem("JWT") ? true : false;
-  }
+  },
+  getMe() {
+    Services.getMe().then(({ data }) => {
+      localStorage.setItem("User", JSON.stringify(data));
+    })
+  },
 }
 
 export default MAuth;
