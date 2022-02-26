@@ -69,6 +69,7 @@ const ConsultantManagement = (props) => {
         additionalParams={additionalParams}
         size={10}
         columnMapping={columnMapping}
+        useFilter
       />
       {createConsultantDialogOpen && <CreateConsultantDialog handleClose={handleCloseCreateConsultantDialog} open={createConsultantDialogOpen} />}
     </div>

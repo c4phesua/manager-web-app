@@ -60,7 +60,15 @@ const ShowroomManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.SHOWROOM_MANAGEMENT}
       </Typography>
-      <DataTable key={next()} renderButton={renderCreateShowroomButton} useSearchText entity="showroom" size={5} columnMapping={columnMapping} />
+      <DataTable
+        key={next()}
+        renderButton={renderCreateShowroomButton}
+        useSearchText
+        entity="showroom"
+        size={5}
+        columnMapping={columnMapping} 
+        useFilter
+      />
       {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen}/>}
     </div>
   );

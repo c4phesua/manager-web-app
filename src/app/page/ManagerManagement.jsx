@@ -53,6 +53,7 @@ const ManagerManagement = (props) => {
         size={5} 
         columnMapping={columnMapping} 
         usePagination
+        useFilter
       />
       {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>
