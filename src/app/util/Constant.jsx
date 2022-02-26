@@ -10,6 +10,7 @@ export const STATUS = {
   ENABLE: 'ENABLE',
   DISABLE: 'DISABLE',
   UNCONFIRMED: 'UNCONFIRMED',
+  ALL: 'ALL',
 }
 
 export const MESSAGE = {

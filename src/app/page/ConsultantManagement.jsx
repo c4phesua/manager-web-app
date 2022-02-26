@@ -61,7 +61,15 @@ const ConsultantManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.CONSULTANT}
       </Typography>
-      <DataTable key={next()} renderButton={renderAddConsultantButton} useSearchText entity="consultant" additionalParams={additionalParams} size={10} columnMapping={columnMapping} />
+      <DataTable
+        key={next()}
+        renderButton={renderAddConsultantButton}
+        useSearchText entity="consultant"
+        usePagination
+        additionalParams={additionalParams}
+        size={10}
+        columnMapping={columnMapping}
+      />
       {createConsultantDialogOpen && <CreateConsultantDialog handleClose={handleCloseCreateConsultantDialog} open={createConsultantDialogOpen} />}
     </div>
   );

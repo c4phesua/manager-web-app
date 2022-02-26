@@ -1,21 +1,33 @@
-import { Card, IconButton, InputAdornment, Paper, TextField } from '@material-ui/core';
-import { Filter, Filter2, FilterList, Search } from '@material-ui/icons';
+import { InputAdornment, Select, TextField } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
+import { STATUS } from '../../util/Constant';
 import Service from '../../util/Services';
-import DropDown from '../DropDown';
 import Pagination from './Pagination';
 
-const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, useSearchText = false, usePagination = false, ...props }) => {
+const DataLoader = ({
+  entity,
+  size,
+  additionalParams,
+  renderData,
+  renderButton,
+  useSearchText = false,
+  usePagination = false,
+  useFilter = false,
+  ...props
+}) => {
 
   const [data, setData] = useState();
   const [page, setPage] = useState(0);
   const [searchText, setSearchText] = useState();
+  const [status, setStatus] = useState();
 
   const params = {
     page,
     size,
     searchText,
-    ...additionalParams //status, showroomId, etc
+    status,
+    ...additionalParams //  showroomId, etc
   }
 
   const searchEntity = () => {
@@ -29,7 +41,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
 
   useEffect(() => {
     refreshData();
-  }, [page]);
+  }, [page, status]);
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
@@ -41,24 +53,27 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
     setSearchText(e.target.value);
   }
 
-
-  const renderOpenFilterButton = (props) => {
-    return (
-      <InputAdornment position="end" >
-        <IconButton {...props}>
-          <FilterList />
-        </IconButton>
-      </InputAdornment>
-    )
+  const onFilterChange = (e) => {
+    let value = e.target.value;
+    if (value === STATUS.ALL) {
+      value = null;
+    }
+    setStatus(value);
   }
 
   const renderFilter = () => {
     return (
-      <DropDown renderAnchorElement={renderOpenFilterButton}>
-        <div className="top-right-dropdown">
-          <div>clicked</div>
+      <div className='d-flex align-items-center mr-5'>
+        <div style={{flex: 'none'}}>
+          Trạng thái:
         </div>
-      </DropDown>
+        <select style={{border: 'none'}} defaultValue={STATUS.ALL} variant='standard' onChange={onFilterChange}>
+          <option value={STATUS.ALL}>Tất cả</option>
+          <option value={STATUS.DISABLE}>Vô hiệu hoá</option>
+          <option value={STATUS.ENABLE}>Đã kích hoạt</option>
+          <option value={STATUS.UNCONFIRMED}>Chưa kích hoạt</option>
+        </select>
+      </div>
     )
   }
 
