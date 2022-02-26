@@ -1,3 +1,8 @@
+.data-table {
+  min-height: 30vh;
+  max-height: 60vh;
+}
+
 .table {
   margin-bottom: 0;
   width: 100%;
@@ -9,8 +14,9 @@
     padding: 0.392rem;
     padding-top: 0.571rem;
     padding-bottom: 1.142rem;
-    color: #3F548F;
+    color: #1D3066;
     font-size: 0.857rem;
+    background-color: #F9FAFC;
   }
 
   tbody {

@@ -1,4 +1,5 @@
-import { InputAdornment, Select, TextField } from '@material-ui/core';
+import { Card, CardContent, InputAdornment, TextField } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { STATUS } from '../../util/Constant';
@@ -14,6 +15,7 @@ const DataLoader = ({
   useSearchText = false,
   usePagination = false,
   useFilter = false,
+  noCard = false,
   ...props
 }) => {
 
@@ -64,10 +66,10 @@ const DataLoader = ({
   const renderFilter = () => {
     return (
       <div className='d-flex align-items-center mr-5'>
-        <div style={{flex: 'none'}}>
+        <div style={{ flex: 'none' }}>
           Trạng thái:
         </div>
-        <select style={{border: 'none'}} defaultValue={STATUS.ALL} variant='standard' onChange={onFilterChange}>
+        <select style={{ border: 'none' }} defaultValue={STATUS.ALL} variant='standard' onChange={onFilterChange}>
           <option value={STATUS.ALL}>Tất cả</option>
           <option value={STATUS.DISABLE}>Vô hiệu hoá</option>
           <option value={STATUS.ENABLE}>Đã kích hoạt</option>
@@ -80,6 +82,7 @@ const DataLoader = ({
   const renderSearchText = () => {
     return (
       <TextField
+        className="bg-white"
         type="text"
         id='search-input'
         spellCheck="false"
@@ -105,20 +108,50 @@ const DataLoader = ({
     setPage(zeroBasedPage.selected);
   }
 
-  return data ? (
-    <>
-      <div className='row mb-3'>
-        <div className='col'>
-          {useSearchText && renderSearchText()}
+  const showData = () => {
+    return (
+      <>
+        {renderData(data.content)}
+        {
+          usePagination && <div className="d-flex justify-content-end">
+            <Pagination store={data} onPageChange={onPageChange} />
+          </div>
+        }
+      </>
+    )
+
+  }
+
+  const render = () => {
+    return (
+      <>
+        <div className='row mb-3'>
+          <div className='col'>
+            {useSearchText && renderSearchText()}
+          </div>
+          {renderButton && <div className='col-sm col-sm-auto'>
+            {renderButton()}
+          </div>}
         </div>
-        {renderButton && <div className='col-sm col-sm-auto'>
-          {renderButton()}
-        </div>}
-      </div>
-      {renderData(data.content)}
-      {usePagination && <Pagination store={data} onPageChange={onPageChange} />}
-    </>
-  ) : null;
+        {
+          data ? showData() : <Skeleton animation="wave" variant="rect" height={200}/>
+        }
+
+      </>
+    )
+  }
+
+  const renderWithCard = () => {
+    return (
+      <Card>
+        <CardContent>
+          {render()}
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return noCard ? render() : renderWithCard();
 }
 
 export default DataLoader;
