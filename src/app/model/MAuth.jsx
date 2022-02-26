@@ -8,6 +8,8 @@ const MAuth = {
     })
     .then(() => {
       this.getMe();
+    })
+    .then(() => {
       PageRouter.redirect("/");
     })
 

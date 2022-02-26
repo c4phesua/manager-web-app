@@ -11,6 +11,8 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
 
   const onBackButtonClick = (e) => {
     e.preventDefault();
+    message === MESSAGE.USER_DENIED ?
+    PageRouter.redirect(RouteConstants.logout) :
     PageRouter.redirect(RouteConstants.root);
   }
 
@@ -59,7 +61,7 @@ const Error = ({ message = MESSAGE.NOT_FOUND }) => {
               variant="contained"
               onClick={onBackButtonClick}
             >
-              Quay về trang chủ
+              {message === MESSAGE.USER_DENIED ? 'Đăng xuất' : 'Quay về trang chủ'}
             </Button>
           </Box>
         </Container>
