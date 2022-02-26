@@ -5,7 +5,6 @@ import DataLoader from './DataLoader';
 const DataTable = ({entity, size, additionalParams, ...props}) => {
 
   const renderData = (data) => {
-    console.log(props);
     return (
       <TableCore data={data} {...props} />
     );

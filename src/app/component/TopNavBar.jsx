@@ -56,7 +56,7 @@ const TopNavBar = ({ user }) => {
     )
   }
   return (
-    <Toolbar>
+    <Toolbar className='top-navbar'>
       <div className='flex-grow-1'></div>
       {renderDropDownAvatar()}
     </Toolbar>
