@@ -98,7 +98,7 @@ const DataLoader = ({
               <Search />
             </InputAdornment>
           ),
-          endAdornment: renderFilter()
+          endAdornment: useFilter && renderFilter()
         }}
       />
     )

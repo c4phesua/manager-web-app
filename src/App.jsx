@@ -4,15 +4,12 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import HelloWorld from './app/page/HelloWorld';
 import { ThemeProvider } from '@material-ui/styles';
 import RouteConstants from './app/routes/RouteConstants';
 import LoginPage from './app/page/LoginPage';
 import LogoutPage from './app/page/LogoutPage';
 import UnauthenticatedRoute from './app/routes/UnauthenticatedRoute';
 import Error from './app/page/Error';
-import AdminPageTest from './app/page/AdminPageTest';
-import ManagerPageTest from './app/page/ManagerPageTest';
 import AuthorizedRoute from './app/routes/AuthorizedRoute';
 import { ROLE } from './app/util/Constant';
 import { theme } from './app/theme/theme';
@@ -35,10 +32,7 @@ function App() {
         <Router>
           <Switch>
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
-            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.adminTest} component={AdminPageTest} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
-            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
-            <AuthorizedRoute role={ROLE.MANAGER} exact path={RouteConstants.managerTest} component={ManagerPageTest} />
             <AuthorizedRoute exact path={RouteConstants.dashBoard} component={Dashboard} />
             <AuthorizedRoute exact path={RouteConstants.root} component={Dashboard} />
             <AuthorizedRoute exact path={RouteConstants.consultants} component={Consultant} />
