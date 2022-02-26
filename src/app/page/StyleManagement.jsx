@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import { PAGE_NAME } from '../util/Constant';
 
@@ -7,7 +8,7 @@ const StyleManagement = (props) => {
 
   return (
     <div>
-      style
+      <Typography variant='h3' align='left'>{PAGE_NAME.STYLE_MANAGEMENT}</Typography>
     </div>
   );
 }

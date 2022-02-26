@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
@@ -13,7 +14,7 @@ const PackageManagement = (props) => {
 
   return (
     <div>
-      packages
+      <Typography variant='h3' align='left'>{PAGE_NAME.PACKAGE_MANAGEMENT}</Typography>
       <DataTable entity="package" size={5} columnMapping={columnMapping} />
     </div>
   );
