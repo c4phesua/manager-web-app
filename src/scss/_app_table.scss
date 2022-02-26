@@ -86,3 +86,32 @@
     }
   }
 }
+
+.pagination {
+
+  display: inline-flex;
+  margin-bottom: 0;
+  margin-right: 1em;
+  margin-top: 0.857rem; // set as the same margin-top of component which has card in datatable
+
+  a, span {
+    position: relative;
+    padding: 2px 7px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  a:hover, span:hover {
+    text-decoration: none;
+  }
+
+  .active a, .active span {
+    color: white;
+    background: #007bff;
+  }
+
+  .disabled a, .disabled span {
+    color: #8F9CBD;
+    cursor: default;
+  }
+}

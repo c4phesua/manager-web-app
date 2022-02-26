@@ -3,8 +3,9 @@ import { Filter, Filter2, FilterList, Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Service from '../../util/Services';
 import DropDown from '../DropDown';
+import Pagination from './Pagination';
 
-const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, useSearchText = false, ...props }) => {
+const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, useSearchText = false, usePagination = false, ...props }) => {
 
   const [data, setData] = useState();
   const [page, setPage] = useState(0);
@@ -19,7 +20,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
 
   const searchEntity = () => {
     Service.search(entity, params)
-      .then(({ data }) => setData(data.content));
+      .then(({ data }) => setData(data));
   }
 
   const refreshData = () => {
@@ -28,7 +29,7 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
 
   useEffect(() => {
     refreshData();
-  }, []);
+  }, [page]);
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
@@ -85,6 +86,10 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
     )
   }
 
+  const onPageChange = (zeroBasedPage) => {
+    setPage(zeroBasedPage.selected);
+  }
+
   return data ? (
     <>
       <div className='row mb-3'>
@@ -95,7 +100,8 @@ const DataLoader = ({ entity, size, additionalParams, renderData, renderButton, 
           {renderButton()}
         </div>}
       </div>
-      {renderData(data)}
+      {renderData(data.content)}
+      {usePagination && <Pagination store={data} onPageChange={onPageChange} />}
     </>
   ) : null;
 }
