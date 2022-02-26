@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
@@ -6,22 +6,24 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { PAGE_NAME } from '../util/Constant';
 import { next } from '../util/Count';
+import { managerIdDecorator, statusDecorator } from '../util/DecoratorConstant';
 
 const ManagerManagement = (props) => {
 
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
   const [createManagerDialogOpen, setCreateManagerDialogOpen] = useState(false);
+  const entity = 'manager';
 
   const columnMapping = [
-    new TableColumnDataMapping('ID', 'id'),
+    new TableColumnDataMapping('ID', 'id', (name, row) => managerIdDecorator(name, row)),
     new TableColumnDataMapping('Họ', 'firstname'),
     new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
-    new TableColumnDataMapping('Trạng thái', 'status'),
+    new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
   const renderAddManagerButton = () => {
@@ -49,7 +51,7 @@ const ManagerManagement = (props) => {
         key={next()}
         renderButton={renderAddManagerButton}
         useSearchText
-        entity="manager"
+        entity={entity}
         size={5} 
         columnMapping={columnMapping} 
         usePagination
