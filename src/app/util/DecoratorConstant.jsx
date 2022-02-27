@@ -4,7 +4,7 @@ import StatusSwitch from '../component/StatusSwitch';
 import { STATUS } from './Constant';
 import Services from './Services';
 
-export const managerIdDecorator = (name, row) => {
+export const idDecorator = (name, row) => {
   const id = get(row, name, '');
   return (
     <div>
@@ -17,7 +17,7 @@ export const managerIdDecorator = (name, row) => {
 export const renderStatusLabel = (status) => {
   switch (status) {
     case STATUS.UNCONFIRMED:
-      return 'Chưa xác minh'
+      return 'Chưa kích hoạt'
     case STATUS.DISABLE:
       return 'Ngưng hoạt động'
     case STATUS.ENABLE:
@@ -42,11 +42,8 @@ export const renderStatusColor = (status) => {
 
 export const statusDecorator = (name, row, entity) => {
   const status = get(row, name, '');
-  const statusLabel = renderStatusLabel(status);
   // const checked = status === STATUS.ENABLE;
-  let checked = status === STATUS.ENABLE;
   const onStatusChange = (e) => {
-    //call service
     console.log('call service');
   }
   return (

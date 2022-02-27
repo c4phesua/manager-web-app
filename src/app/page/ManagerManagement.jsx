@@ -6,7 +6,7 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { PAGE_NAME } from '../util/Constant';
 import { next } from '../util/Count';
-import { managerIdDecorator, statusDecorator } from '../util/DecoratorConstant';
+import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
 const ManagerManagement = (props) => {
 
@@ -16,7 +16,7 @@ const ManagerManagement = (props) => {
   const entity = 'manager';
 
   const columnMapping = [
-    new TableColumnDataMapping('ID', 'id', (name, row) => managerIdDecorator(name, row), 'text-center'),
+    new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Họ', 'firstname'),
     new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),

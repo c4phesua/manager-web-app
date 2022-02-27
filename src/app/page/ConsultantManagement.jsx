@@ -6,6 +6,7 @@ import { Button, Typography } from '@material-ui/core';
 import Error from './Error';
 import CreateConsultantDialog from '../component/dialog/CreateConsultantDialog';
 import { next } from '../util/Count';
+import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
 
 const ConsultantManagement = (props) => {
@@ -15,16 +16,17 @@ const ConsultantManagement = (props) => {
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
   const [createConsultantDialogOpen, setCreateConsultantDialogOpen] = useState(false);
+  const entity = 'consultant';
 
   const columnMapping = [
-    new TableColumnDataMapping('ID', 'id'),
+    new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Họ', 'firstname'),
     new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Email', 'email'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
-    new TableColumnDataMapping('Trạng thái', 'status'),
+    new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
   const additionalParams = {
@@ -64,7 +66,8 @@ const ConsultantManagement = (props) => {
       <DataTable
         key={next()}
         renderButton={renderAddConsultantButton}
-        useSearchText entity="consultant"
+        useSearchText
+        entity={entity}
         usePagination
         additionalParams={additionalParams}
         size={10}

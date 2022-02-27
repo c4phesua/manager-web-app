@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { STATUS } from '../../util/Constant';
 import Service from '../../util/Services';
 import Pagination from './Pagination';
+import { renderStatusLabel } from '../../util/DecoratorConstant';
 
 const DataLoader = ({
   entity,
@@ -71,9 +72,9 @@ const DataLoader = ({
         </div>
         <select style={{ border: 'none' }} defaultValue={STATUS.ALL} variant='standard' onChange={onFilterChange}>
           <option value={STATUS.ALL}>Tất cả</option>
-          <option value={STATUS.DISABLE}>Vô hiệu hoá</option>
-          <option value={STATUS.ENABLE}>Đã kích hoạt</option>
-          <option value={STATUS.UNCONFIRMED}>Chưa kích hoạt</option>
+          <option value={STATUS.DISABLE}>{renderStatusLabel(STATUS.DISABLE)}</option>
+          <option value={STATUS.ENABLE}>{renderStatusLabel(STATUS.ENABLE)}</option>
+          <option value={STATUS.UNCONFIRMED}>{renderStatusLabel(STATUS.UNCONFIRMED)}</option>
         </select>
       </div>
     )
