@@ -1,18 +1,34 @@
+const root = '/';
+const login = '/login';
+const logout = '/logout';
+const dashBoard = '/dashboard';
+const consultants = '/consultant';
+const showrooms = '/showroom';
+const bookings = '/booking';
+const packages = '/package';
+const promotions = '/promotion';
+const styles = '/style';
+const profile = '/profile';
+
+
+const managers = '/manager';
+const manager = `${managers}/:id`;
+
+
 const RouteConstants = {
-  root: '/',
-  login: '/login',
-  logout: '/logout',
-  adminTest: '/adminTest',
-  managerTest: '/managerTest',
-  dashBoard: '/dashboard',
-  managers: '/manager',
-  consultants: '/consultant',
-  showrooms: '/showroom',
-  bookings: '/booking',
-  packages: '/package',
-  promotions: '/promotion',
-  styles: '/style',
-  profile: '/profile',
+  root,
+  login,
+  logout,
+  dashBoard,
+  managers,
+  consultants,
+  showrooms,
+  bookings,
+  packages,
+  promotions,
+  styles,
+  profile,
+  manager,
 }
 
 export default RouteConstants;
