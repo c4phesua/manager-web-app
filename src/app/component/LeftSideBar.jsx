@@ -6,16 +6,17 @@ import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuIte
 import RouteConstants from '../routes/RouteConstants';
 import PageRouter from '../routes/PageRouter';
 import Arrays from '../util/Arrays';
+import { matchPath } from 'react-router-dom';
 
 
 const LeftSideBar = ({ user }) => {
 
   const isActive = (path) => {
-    return PageRouter.currentPath() === path;
+    return matchPath(PageRouter.currentPath(), {path});
   }
 
   const isDashboard = () => {
-    return isActive(RouteConstants.root) || isActive(RouteConstants.dashBoard);
+    return [RouteConstants.root, RouteConstants.dashBoard].includes(PageRouter.currentPath());
   }
 
   const { role } = user;
@@ -26,11 +27,20 @@ const LeftSideBar = ({ user }) => {
     );
   }
 
+  const isSubmenuOpen = () => {
+    return [
+      RouteConstants.manager,
+      RouteConstants.managers,
+      RouteConstants.consultants,
+      RouteConstants.consultant,
+    ].includes(PageRouter.currentPath());
+  }
+
   const renderUserManagement = () => {
     return (
-      <SubMenu title={PAGE_NAME.HR_MANAGEMENT} icon={<Group />}>
+      <SubMenu title={PAGE_NAME.HR_MANAGEMENT} icon={<Group />} open={isSubmenuOpen}>
         {role === ROLE.ADMIN &&
-          <MenuItem active={isActive(RouteConstants.managers)} icon={<SupervisedUserCircle />}>{PAGE_NAME.MANAGER} <Link to={RouteConstants.managers} /></MenuItem>}
+          <MenuItem active={isActive(RouteConstants.managers) || isActive(RouteConstants.manager)} icon={<SupervisedUserCircle />}>{PAGE_NAME.MANAGER} <Link to={RouteConstants.managers} /></MenuItem>}
         <MenuItem active={isActive(RouteConstants.consultants)} icon={<AccountCircle />}>{PAGE_NAME.CONSULTANT}<Link to={RouteConstants.consultants} /></MenuItem>
       </SubMenu>
     );

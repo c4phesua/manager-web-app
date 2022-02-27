@@ -23,6 +23,7 @@ import PromotionManagement from './app/page/PromotionManagement';
 import StyleManagement from './app/page/StyleManagement';
 import Profile from './app/page/Profile';
 import Setting from './app/page/Setting';
+import ManagerDetails from './app/page/ManagerDetails';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Switch>
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
+            <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.manager} component={ManagerDetails} />
             <AuthorizedRoute exact path={RouteConstants.dashBoard} component={Dashboard} />
             <AuthorizedRoute exact path={RouteConstants.root} component={Dashboard} />
             <AuthorizedRoute exact path={RouteConstants.consultants} component={Consultant} />

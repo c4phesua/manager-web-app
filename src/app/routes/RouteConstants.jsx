@@ -1,8 +1,8 @@
+const id = "/:id"
 const root = '/';
 const login = '/login';
 const logout = '/logout';
 const dashBoard = '/dashboard';
-const consultants = '/consultant';
 const showrooms = '/showroom';
 const bookings = '/booking';
 const packages = '/package';
@@ -13,7 +13,10 @@ const setting = '/setting';
 
 
 const managers = '/manager';
-const manager = `${managers}/:id`;
+const manager = managers + id;
+
+const consultants = '/consultant';
+const consultant = consultants + id;
 
 
 const RouteConstants = {
@@ -23,6 +26,7 @@ const RouteConstants = {
   dashBoard,
   managers,
   consultants,
+  consultant,
   showrooms,
   bookings,
   packages,
