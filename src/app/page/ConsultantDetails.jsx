@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ManagerDetails = (props) => {
+const ConsultantDetails = (props) => {
 
   const { params: { id } } = props.match;
 
@@ -11,4 +11,4 @@ const ManagerDetails = (props) => {
   );
 }
 
-export default ManagerDetails;
+export default ConsultantDetails;

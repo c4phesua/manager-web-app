@@ -15,7 +15,6 @@ import { ROLE } from './app/util/Constant';
 import { theme } from './app/theme/theme';
 import Dashboard from './app/page/Dashboard';
 import ManagerManagement from './app/page/ManagerManagement';
-import Consultant from './app/page/ConsultantManagement';
 import BookingManagement from './app/page/BookingManagement';
 import ShowroomManagement from './app/page/ShowroomManagement';
 import PackageManagement from './app/page/PackageManagement';
@@ -24,6 +23,8 @@ import StyleManagement from './app/page/StyleManagement';
 import Profile from './app/page/Profile';
 import Setting from './app/page/Setting';
 import ManagerDetails from './app/page/ManagerDetails';
+import ConsultantManagement from './app/page/ConsultantManagement';
+import ConsultantDetails from './app/page/ConsultantDetails';
 
 
 function App() {
@@ -38,7 +39,8 @@ function App() {
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.manager} component={ManagerDetails} />
             <AuthorizedRoute exact path={RouteConstants.dashBoard} component={Dashboard} />
             <AuthorizedRoute exact path={RouteConstants.root} component={Dashboard} />
-            <AuthorizedRoute exact path={RouteConstants.consultants} component={Consultant} />
+            <AuthorizedRoute exact path={RouteConstants.consultants} component={ConsultantManagement} />
+            <AuthorizedRoute exact path={RouteConstants.consultant} component={ConsultantDetails} />
             <AuthorizedRoute exact path={RouteConstants.showrooms} component={ShowroomManagement} />
             <AuthorizedRoute exact path={RouteConstants.bookings} component={BookingManagement}/>
             <AuthorizedRoute exact path={RouteConstants.packages} component={PackageManagement}/>
