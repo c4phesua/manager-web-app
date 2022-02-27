@@ -22,6 +22,7 @@ import PackageManagement from './app/page/PackageManagement';
 import PromotionManagement from './app/page/PromotionManagement';
 import StyleManagement from './app/page/StyleManagement';
 import Profile from './app/page/Profile';
+import Setting from './app/page/Setting';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <AuthorizedRoute exact path={RouteConstants.promotions} component={PromotionManagement}/>
             <AuthorizedRoute exact path={RouteConstants.styles} component={StyleManagement}/>
             <AuthorizedRoute exact path={RouteConstants.profile} component={Profile}/>
+            <AuthorizedRoute exact path={RouteConstants.setting} component={Setting}/>
             <Route exact path={RouteConstants.logout} component={LogoutPage} />
             <Route component={Error} />
           </Switch>
