@@ -32,6 +32,13 @@ const AccountProfile = (props) => {
           </Typography>
           <Typography
             color="textSecondary"
+            gutterBottom
+            variant="body2"
+          >
+            {user.email}
+          </Typography>
+          <Typography
+            color="textSecondary"
             variant="body2"
           >
             {`${user.address}`}

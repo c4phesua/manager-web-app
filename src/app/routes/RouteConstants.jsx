@@ -9,6 +9,7 @@ const packages = '/package';
 const promotions = '/promotion';
 const styles = '/style';
 const profile = '/profile';
+const setting = '/setting';
 
 
 const managers = '/manager';
@@ -29,6 +30,7 @@ const RouteConstants = {
   styles,
   profile,
   manager,
+  setting,
 }
 
 export default RouteConstants;

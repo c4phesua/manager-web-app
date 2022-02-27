@@ -78,21 +78,6 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Địa chỉ email"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
                 label="Số điện thoại"
                 name="phone"
                 onChange={handleChange}
@@ -156,7 +141,7 @@ export const AccountProfileDetails = (props) => {
             color="primary"
             variant="contained"
           >
-            Save details
+            Lưu thông tin
           </Button>
         </Box>
       </Card>

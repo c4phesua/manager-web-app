@@ -33,6 +33,7 @@ export const PAGE_NAME = {
   PROMOTION_MANAGEMENT: 'Quản lý khuyến mãi',
   STYLE_MANAGEMENT: 'Quản lý kiểu trang điểm',
   PROFILE: 'Trang cá nhân',
+  SETTING: 'Cài đặt',
 }
 
 export const USER_STATUS = {

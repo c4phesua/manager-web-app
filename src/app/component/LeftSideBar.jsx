@@ -1,5 +1,5 @@
 import React from 'react';
-import { Backspace, Dashboard, Apartment, PhotoCamera, Loyalty, Receipt, Style, SupervisedUserCircle, Group, AccountCircle, Person } from '@material-ui/icons';
+import { Backspace, Dashboard, Apartment, PhotoCamera, Loyalty, Receipt, Style, SupervisedUserCircle, Group, AccountCircle, Person, Settings } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { PAGE_NAME, ROLE } from '../util/Constant';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
@@ -44,6 +44,7 @@ const LeftSideBar = ({ user }) => {
     ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.PROMOTION_MANAGEMENT, icon: <Loyalty />, link: RouteConstants.promotions }),
     ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles }),
     { name: PAGE_NAME.PROFILE, icon: <Person />, link: RouteConstants.profile },
+    { name: PAGE_NAME.SETTING, icon: <Settings />, link: RouteConstants.setting },
   ];
 
 
