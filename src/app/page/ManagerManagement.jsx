@@ -16,7 +16,7 @@ const ManagerManagement = (props) => {
   const entity = 'manager';
 
   const columnMapping = [
-    new TableColumnDataMapping('ID', 'id', (name, row) => managerIdDecorator(name, row)),
+    new TableColumnDataMapping('ID', 'id', (name, row) => managerIdDecorator(name, row), 'text-center'),
     new TableColumnDataMapping('Họ', 'firstname'),
     new TableColumnDataMapping('Tên', 'lastname'),
     new TableColumnDataMapping('Email', 'email'),
