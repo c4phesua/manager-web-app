@@ -1,5 +1,6 @@
 import { Button, Switch } from '@material-ui/core';
 import { get } from 'lodash';
+import StatusSwitch from '../component/StatusSwitch';
 import { STATUS } from './Constant';
 import Services from './Services';
 
@@ -13,8 +14,7 @@ export const managerIdDecorator = (name, row) => {
 }
 
 
-
-const renderStatusLabel = (status) => {
+export const renderStatusLabel = (status) => {
   switch (status) {
     case STATUS.UNCONFIRMED:
       return 'Chưa xác minh'
@@ -27,7 +27,7 @@ const renderStatusLabel = (status) => {
   }
 }
 
-const renderStatusColor = (status) => {
+export const renderStatusColor = (status) => {
   switch (status) {
     case STATUS.UNCONFIRMED:
       return 'text-danger'
@@ -46,20 +46,12 @@ export const statusDecorator = (name, row, entity) => {
   // const checked = status === STATUS.ENABLE;
   let checked = status === STATUS.ENABLE;
   const onStatusChange = (e) => {
-    checked = e.target.checked;
-    console.log('checked', checked);
+    //call service
+    console.log('call service');
   }
   return (
     <div>
-      <Switch
-        checked={checked}
-        onChange={onStatusChange}
-        name={`${entity}-status`}
-        disabled={status === STATUS.UNCONFIRMED}
-      />
-      <span className={renderStatusColor(status)}>
-        {statusLabel}
-      </span>
+      <StatusSwitch entity={entity} onStatusChange={onStatusChange} status={status} />
     </div>
   )
 }
