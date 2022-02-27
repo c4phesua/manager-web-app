@@ -3,15 +3,17 @@ import Services from '../util/Services';
 
 const MAuth = {
   login(user) {
-    Services.login(user).then(({data}) => {
+    Services.login(user).then(({ data }) => {
       localStorage.setItem("JWT", `Bearer ${data.accessToken}`);
     })
-    .then(() => {
-      this.getMe();
-    })
-    .then(() => {
-      PageRouter.redirect("/");
-    })
+      .then(() => {
+        Services.getMe().then(({ data }) => {
+          localStorage.setItem("User", JSON.stringify(data));
+        })
+          .then(() => {
+            PageRouter.redirect("/");
+          })
+      })
 
   },
   logout() {

@@ -26,7 +26,6 @@ import Profile from './app/page/Profile';
 
 function App() {
 
-  console.log('path', RouteConstants.managerDetails);
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
