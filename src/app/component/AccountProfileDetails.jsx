@@ -48,7 +48,7 @@ export const AccountProfileDetails = (props) => {
               <TextField
                 fullWidth
                 helperText="Please specify the first name"
-                label="First name"
+                label="Họ"
                 name="firstName"
                 onChange={handleChange}
                 required
@@ -63,7 +63,7 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Last name"
+                label="Tên"
                 name="lastName"
                 onChange={handleChange}
                 required
@@ -78,7 +78,7 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Email Address"
+                label="Địa chỉ email"
                 name="email"
                 onChange={handleChange}
                 required
@@ -93,7 +93,7 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Phone Number"
+                label="Số điện thoại"
                 name="phone"
                 onChange={handleChange}
                 type="number"
@@ -108,7 +108,7 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Country"
+                label="Địa chỉ"
                 name="country"
                 onChange={handleChange}
                 required
