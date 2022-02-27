@@ -43,8 +43,8 @@ export const renderStatusColor = (status) => {
 export const statusDecorator = (name, row, entity) => {
   const status = get(row, name, '');
   // const checked = status === STATUS.ENABLE;
-  const onStatusChange = (e) => {
-    console.log('call service');
+  const onStatusChange = (val) => {
+    console.log('call service', val);
   }
   return (
     <div>

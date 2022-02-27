@@ -8,16 +8,17 @@ const StatusSwitch = ({status, entity, onStatusChange}) => {
   const [checked, setChecked] = useState(status === STATUS.ENABLE);
   const [statusColor, setStatusColor] = useState(renderStatusColor(status));
   const handleOnChange = (e) => {
-    setChecked(e.target.checked);
-    if (e.target.checked) {
+    const value = e.target.checked;
+    setChecked(value);
+    if (value) {
       setStatusLabel(renderStatusLabel(STATUS.ENABLE))
       setStatusColor(renderStatusColor(STATUS.ENABLE))
-    } else if (!e.target.checked) {
+    } else if (!value) {
       setStatusLabel(renderStatusLabel(STATUS.DISABLE))
       setStatusColor(renderStatusColor(STATUS.DISABLE))
     }
     if (onStatusChange) {
-      onStatusChange();
+      onStatusChange(value);
     }
   }
   return (
