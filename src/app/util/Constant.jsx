@@ -45,3 +45,9 @@ export const USER_GENDER = {
   MALE: 'MALE',
   FEMALE: 'FEMALE',
 }
+
+export const ENTITY = {
+  MANAGER: 'manager',
+  CONSULTANT: 'consultant',
+  SHOWROOM: 'showroom',
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MESSAGE, PAGE_NAME, ROLE } from '../util/Constant';
+import { ENTITY, MESSAGE, PAGE_NAME, ROLE } from '../util/Constant';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import DataTable from '../component/table/DataTable';
 import { Button, Typography } from '@material-ui/core';
@@ -16,7 +16,7 @@ const ConsultantManagement = (props) => {
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
   const [createConsultantDialogOpen, setCreateConsultantDialogOpen] = useState(false);
-  const entity = 'consultant';
+  const entity = ENTITY.CONSULTANT;
 
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),

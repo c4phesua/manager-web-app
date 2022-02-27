@@ -4,11 +4,11 @@ import StatusSwitch from '../component/StatusSwitch';
 import { STATUS } from './Constant';
 import Services from './Services';
 
-export const idDecorator = (name, row) => {
+export const idDecorator = (name, row, entity) => {
   const id = get(row, name, '');
   return (
     <div>
-      <Button color='primary' href={`/manager/${id}`}>{id}</Button>
+      <Button color='primary' href={`/${entity}/${id}`}>{id}</Button>
     </div>
   )
 }

@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import CreateShowroomDialog from '../component/dialog/CreateShowroomDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { PAGE_NAME, ROLE } from '../util/Constant';
+import { ENTITY, PAGE_NAME, ROLE } from '../util/Constant';
 import { next } from '../util/Count';
+import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 import Error from './Error';
 
 const ShowroomManagement = (props) => {
@@ -15,14 +16,15 @@ const ShowroomManagement = (props) => {
 
 
   const { user } = props;
+  const entity = ENTITY.SHOWROOM;
 
   const columnMapping = [
-    new TableColumnDataMapping('ID', 'id'),
+    new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Tên', 'name'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
     new TableColumnDataMapping('Id người quản lý', 'managerId'),
-    new TableColumnDataMapping('Trạng thái', 'status'),
+    new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
   if (user.role === ROLE.MANAGER) {
@@ -64,7 +66,7 @@ const ShowroomManagement = (props) => {
         key={next()}
         renderButton={renderCreateShowroomButton}
         useSearchText
-        entity="showroom"
+        entity={entity}
         size={5}
         columnMapping={columnMapping} 
         useFilter

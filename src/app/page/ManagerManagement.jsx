@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { PAGE_NAME } from '../util/Constant';
+import { ENTITY, PAGE_NAME } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
@@ -13,7 +13,7 @@ const ManagerManagement = (props) => {
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
   const [createManagerDialogOpen, setCreateManagerDialogOpen] = useState(false);
-  const entity = 'manager';
+  const entity = ENTITY.MANAGER;
 
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
