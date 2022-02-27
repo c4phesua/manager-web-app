@@ -1,4 +1,6 @@
-const id = "/:id"
+const id = "/:id";
+const token = "/:token";
+
 const root = '/';
 const login = '/login';
 const logout = '/logout';
@@ -18,6 +20,8 @@ const manager = managers + id;
 const consultants = '/consultant';
 const consultant = consultants + id;
 
+const active = '/active';
+const activeAccount = active + token;
 
 const RouteConstants = {
   root,
@@ -35,6 +39,7 @@ const RouteConstants = {
   profile,
   manager,
   setting,
+  active,
 }
 
 export default RouteConstants;

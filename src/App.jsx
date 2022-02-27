@@ -25,6 +25,7 @@ import Setting from './app/page/Setting';
 import ManagerDetails from './app/page/ManagerDetails';
 import ConsultantManagement from './app/page/ConsultantManagement';
 import ConsultantDetails from './app/page/ConsultantDetails';
+import ActiveAccount from './app/page/ActiveAccount';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Router>
           <Switch>
             <UnauthenticatedRoute exact path={RouteConstants.login} component={LoginPage} />
+            <UnauthenticatedRoute exact path={RouteConstants.active} component={ActiveAccount} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.managers} component={ManagerManagement} />
             <AuthorizedRoute role={ROLE.ADMIN} exact path={RouteConstants.manager} component={ManagerDetails} />
             <AuthorizedRoute exact path={RouteConstants.dashBoard} component={Dashboard} />
