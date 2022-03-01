@@ -14,7 +14,7 @@ export const idDecorator = (name, row, entity) => {
 export const mailDecorator = (name, row) => {
   const email = get(row, name, '');
   return (
-    <div>
+    <div title={`Gửi mail đến ${email}`}>
       <a href={`mailto:${email}`}>{email}</a>
     </div>
   )
@@ -28,7 +28,7 @@ export const renderStatusLabel = (status) => {
     case STATUS.DISABLE:
       return 'Ngưng hoạt động'
     case STATUS.ENABLE:
-      return 'Đang hoạt động'
+      return 'Đã kích hoạt'
     default:
       return;
   }
