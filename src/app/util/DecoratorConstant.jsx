@@ -1,8 +1,6 @@
-import { Button, Switch } from '@material-ui/core';
 import { get } from 'lodash';
 import StatusSwitch from '../component/StatusSwitch';
 import { STATUS } from './Constant';
-import Services from './Services';
 
 export const idDecorator = (name, row, entity) => {
   const id = get(row, name, '');
