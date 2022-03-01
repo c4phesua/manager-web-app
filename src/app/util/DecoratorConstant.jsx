@@ -8,7 +8,16 @@ export const idDecorator = (name, row, entity) => {
   const id = get(row, name, '');
   return (
     <div>
-      <Button color='primary' href={`/${entity}/${id}`}>{id}</Button>
+      <a color='primary' href={`/${entity}/${id}`}>{id}</a>
+    </div>
+  )
+}
+
+export const mailDecorator = (name, row) => {
+  const email = get(row, name, '');
+  return (
+    <div>
+      <a href={`mailto:${email}`}>{email}</a>
     </div>
   )
 }
