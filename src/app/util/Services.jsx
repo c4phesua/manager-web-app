@@ -24,6 +24,10 @@ const Services = {
 
   createShowroom(showroom) {
     return http.post(URL_PERFIX + Apis.showroom, showroom);
+  },
+
+  uploadFile(file) {
+    return http.post(URL_PERFIX + Apis.uploadFile, file, null, null, {'Content-Type': 'image/jpg'})
   }
 };
 

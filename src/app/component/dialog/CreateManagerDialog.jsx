@@ -3,7 +3,7 @@ import { Label, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
-import { getInitialUserForm } from './NewUserHelper';
+import { getInitialUserForm } from './FormHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 
@@ -47,7 +47,7 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
           </FormGroup>
           <FormGroup>
             <Label for='email'>Email</Label>
-            <Input required name='email' onChange={handleOnChange} />
+            <Input required type='email' name='email' onChange={handleOnChange} />
           </FormGroup>
           <FormGroup>
             <Label for='phoneNumber'>Số điện thoại</Label>

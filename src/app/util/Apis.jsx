@@ -5,6 +5,7 @@ const Apis = {
   manager: '/manager',
   consultant: '/consultant',
   showroom: '/showroom',
+  uploadFile: '/files-upload',
 }
 
 export default Apis;
