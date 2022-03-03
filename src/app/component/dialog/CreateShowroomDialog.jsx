@@ -15,18 +15,24 @@ const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) 
   const onDialogSubmit = (e) => {
     e.preventDefault();
     Services.uploadFile(newShowroom.file)
-      .then((response) => {
-        console.log('response', response);
+      .then(({ data: { fileUrl } }) => {
+        setNewShowroom({
+          ...newShowroom,
+          avatar: fileUrl
+        })
+        return fileUrl;
       })
-    // Services.createShowroom(newShowroom).then((response) => {
-    //   console.log(response);
-    //   if (onCreateSuccess) {
-    //     console.log('oncreatesuccess');
-    //     onCreateSuccess();
-    //   }
-    //   Notification.pushSuccess(`Tạo mới chi nhánh ${response?.data?.name} thành công`);
-    //   handleClose();
-    // })
+      .then((fileUrl) => {
+        Services.createShowroom(newShowroom).then((response) => {
+          console.log(response);
+          if (onCreateSuccess) {
+            console.log('oncreatesuccess');
+            onCreateSuccess();
+          }
+          Notification.pushSuccess(`Tạo mới chi nhánh ${response?.data?.name} thành công`);
+          handleClose();
+        })
+      })
   }
 
   const handleOnChange = (e) => {
