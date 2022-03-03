@@ -51,4 +51,5 @@ export const ENTITY = {
   MANAGER: 'manager',
   CONSULTANT: 'consultant',
   SHOWROOM: 'showroom',
+  PACKAGE: 'package',
 }

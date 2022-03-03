@@ -69,6 +69,7 @@ const ShowroomManagement = (props) => {
         entity={entity}
         size={5}
         columnMapping={columnMapping} 
+        usePagination
         useFilter
       />
       {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen}/>}
