@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Typography } from "@material-ui/core";
+import { Avatar, Box, Card, CardContent, Divider, Typography } from "@material-ui/core";
 
 const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
 
@@ -38,20 +38,20 @@ const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
             gutterBottom
             variant="h5"
           >
-            {showroom.name}
+            Tên: {showroom.name}
           </Typography>
           <Typography
             color="textSecondary"
             gutterBottom
             variant="body2"
           >
-            {showroom.phoneNumber}
+            Số điện thoại: {showroom.phoneNumber}
           </Typography>
           <Typography
             color="textSecondary"
             variant="body2"
           >
-            {showroom.address}
+            Địa chỉ: {showroom.address}
           </Typography>
           {/* <Typography
             color="textSecondary"
@@ -62,15 +62,6 @@ const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
-        <Button
-          color="primary"
-          fullWidth
-          variant="text"
-        >
-          Đổi ảnh đại diện
-        </Button>
-      </CardActions>
     </Card>
   )
 };
