@@ -26,6 +26,10 @@ const Services = {
     return http.post(URL_PERFIX + Apis.showroom, showroom);
   },
 
+  createPackage(packAge) {
+    return http.post(URL_PERFIX + Apis.packAge, packAge);
+  },
+
   uploadFile(file) {
     return http.post(URL_PERFIX + Apis.uploadFile, file, null, null, {'Content-Type': 'image/jpg'})
   }

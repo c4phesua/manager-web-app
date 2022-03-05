@@ -2,6 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
+import ManagerStatusBar from '../component/ManagerStatusBar';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME } from '../util/Constant';
@@ -46,13 +47,16 @@ const ManagerManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.MANAGER}
       </Typography>
+      <div className="mb-2">
+        <ManagerStatusBar />
+      </div>
       <DataTable
         key={next()}
         renderButton={renderAddManagerButton}
         useSearchText
         entity={entity}
-        size={5} 
-        columnMapping={columnMapping} 
+        size={5}
+        columnMapping={columnMapping}
         usePagination
         useFilter
       />

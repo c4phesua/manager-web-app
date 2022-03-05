@@ -13,6 +13,7 @@ const DataLoader = ({
   additionalParams,
   renderData,
   renderButton,
+  getAll = false,
   useSearchText = false,
   usePagination = false,
   useFilter = false,
@@ -21,7 +22,7 @@ const DataLoader = ({
 }) => {
 
   const [data, setData] = useState();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(getAll ? undefined : 0);
   const [searchText, setSearchText] = useState();
   const [status, setStatus] = useState();
 
@@ -126,7 +127,7 @@ const DataLoader = ({
   const render = () => {
     return (
       <>
-        <div className='row mb-3'>
+        <div className={useSearchText && 'row mb-3'}>
           <div className='col'>
             {useSearchText && renderSearchText()}
           </div>

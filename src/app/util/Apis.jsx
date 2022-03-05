@@ -5,6 +5,7 @@ const Apis = {
   manager: '/manager',
   consultant: '/consultant',
   showroom: '/showroom',
+  packAge: '/package',
   uploadFile: '/files-upload',
 }
 

@@ -47,6 +47,19 @@ export const renderStatusColor = (status) => {
   }
 }
 
+export const renderProgressColor = (status) => {
+  switch (status) {
+    case STATUS.UNCONFIRMED:
+      return 'danger'
+    case STATUS.DISABLE:
+      return 'info'
+    case STATUS.ENABLE:
+      return 'success'
+    default:
+      return;
+  }
+}
+
 export const statusDecorator = (name, row, entity) => {
   const status = get(row, name, '');
   // const checked = status === STATUS.ENABLE;

@@ -3,14 +3,14 @@ import { Label, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
-import { getIntitialShowroomForm } from './FormHelper';
+import { getInitialShowroomForm } from './FormHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 import ShowroomProfile from '../ShowroomProfile';
 
 const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
-  const [newShowroom, setNewShowroom] = useState(getIntitialShowroomForm());
+  const [newShowroom, setNewShowroom] = useState(getInitialShowroomForm());
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +26,6 @@ const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) 
         Services.createShowroom(newShowroom).then((response) => {
           console.log(response);
           if (onCreateSuccess) {
-            console.log('oncreatesuccess');
             onCreateSuccess();
           }
           Notification.pushSuccess(`Tạo mới chi nhánh ${response?.data?.name} thành công`);
@@ -67,7 +66,7 @@ const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) 
           >
             <Grid
               item
-              lg={4}
+              lg={6}
               md={6}
               xs={12}
             >
@@ -75,7 +74,7 @@ const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) 
             </Grid>
             <Grid
               item
-              lg={8}
+              lg={6}
               md={6}
               xs={12}
             >

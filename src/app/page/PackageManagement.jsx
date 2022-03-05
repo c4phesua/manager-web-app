@@ -1,5 +1,6 @@
-import { Typography } from '@material-ui/core';
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import CreatePackageDialog from '../component/dialog/CreatePackageDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME } from '../util/Constant';
@@ -9,6 +10,24 @@ import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 const PackageManagement = (props) => {
 
   document.title = PAGE_NAME.PACKAGE_MANAGEMENT;
+
+  const [createPackageDialogOpen, setCreatePackageDialogOpen] = useState(false);
+
+  const handleCloseCreatePackageDialog = () => {
+    setCreatePackageDialogOpen(false);
+  }
+
+  const handleOpenCreatePackageDialog = () => {
+    setCreatePackageDialogOpen(true);
+  }
+
+  const renderCreatePackageButton = () => {
+    return (
+      <Button color='primary' variant="contained" onClick={handleOpenCreatePackageDialog}>
+        Thêm gói dịch vụ
+      </Button>
+    )
+  }
 
   const entity = ENTITY.PACKAGE;
 
@@ -25,7 +44,7 @@ const PackageManagement = (props) => {
       <Typography variant='h3' align='left'>{PAGE_NAME.PACKAGE_MANAGEMENT}</Typography>
       <DataTable
         key={next()}
-        // renderButton={renderCreateShowroomButton}
+        renderButton={renderCreatePackageButton}
         useSearchText
         entity={entity}
         size={5}
@@ -33,6 +52,7 @@ const PackageManagement = (props) => {
         usePagination
         useFilter
       />
+      {createPackageDialogOpen && <CreatePackageDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}
     </div>
   );
 }

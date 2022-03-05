@@ -22,7 +22,8 @@ const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
           sx={{
             alignItems: 'center',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            height: '40vh'
           }}
         >
           <Avatar
@@ -53,12 +54,6 @@ const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
           >
             Địa chỉ: {showroom.address}
           </Typography>
-          {/* <Typography
-            color="textSecondary"
-            variant="body2"
-          >
-            {user.timezone}
-          </Typography> */}
         </Box>
       </CardContent>
       <Divider />

@@ -12,7 +12,7 @@ export const getInitialUserForm = () => {
   }
 }
 
-export const getIntitialShowroomForm = () => {
+export const getInitialShowroomForm = () => {
   return {
     name: '',
     phoneNumber: '',
@@ -20,5 +20,15 @@ export const getIntitialShowroomForm = () => {
     description: '',
     avatar: '',
     managerId: '',
+  }
+}
+
+export const getInitialPackageForm = () => {
+  return {
+    name: '',
+    duration: 0,
+    description: '',
+    location: '',
+    images: [],
   }
 }
