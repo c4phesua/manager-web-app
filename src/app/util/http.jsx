@@ -35,11 +35,11 @@ const http = {
     return new Promise((resolve, reject) => {
       axios(config)
         .then((response) => resolve(response))
-        .catch(({response}) => {
+        .catch(({response, message, request}) => {
           if (errorHandler) {
             errorHandler(response);
           } else {
-            Notification.pushError(response.data.error, response.status);
+            Notification.pushError(response.data.error || message, response.status);
           }
         });
     })
