@@ -7,11 +7,12 @@ import Error from './Error';
 import CreateConsultantDialog from '../component/dialog/CreateConsultantDialog';
 import { next } from '../util/Count';
 import { idDecorator, mailDecorator, statusDecorator } from '../util/DecoratorConstant';
+import UserStatusBar from '../component/UserStatusBar';
 
 
 const ConsultantManagement = (props) => {
 
-  const {user} = props;
+  const { user } = props;
 
   document.title = PAGE_NAME.HR_MANAGEMENT;
 
@@ -62,6 +63,9 @@ const ConsultantManagement = (props) => {
       <Typography variant='h3' align='left'>
         {PAGE_NAME.CONSULTANT}
       </Typography>
+      <div className="mb-2">
+        <UserStatusBar entity={entity} />
+      </div>
       <DataTable
         key={next()}
         renderButton={renderAddConsultantButton}

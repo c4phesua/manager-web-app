@@ -6,7 +6,7 @@ import { Typography } from '@material-ui/core';
 import { renderProgressColor, renderStatusColor, renderStatusLabel } from '../util/DecoratorConstant'
 import { Badge, Progress, UncontrolledTooltip } from 'reactstrap';
 
-function ManagerStatusBar(props) {
+function UserStatusBar({ entity }) {
 
   const renderItem = (item) => {
     return (
@@ -50,7 +50,7 @@ function ManagerStatusBar(props) {
 
   return (
     <DataLoader
-      entity={ENTITY.MANAGER}
+      entity={entity}
       getAll
       renderData={renderData}
       key={next()}
@@ -58,4 +58,4 @@ function ManagerStatusBar(props) {
   );
 }
 
-export default ManagerStatusBar;
+export default UserStatusBar;

@@ -2,7 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
-import ManagerStatusBar from '../component/ManagerStatusBar';
+import UserStatusBar from '../component/UserStatusBar';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME } from '../util/Constant';
@@ -48,7 +48,7 @@ const ManagerManagement = (props) => {
         {PAGE_NAME.MANAGER}
       </Typography>
       <div className="mb-2">
-        <ManagerStatusBar />
+        <UserStatusBar entity={entity}/>
       </div>
       <DataTable
         key={next()}
