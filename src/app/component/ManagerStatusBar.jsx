@@ -2,15 +2,15 @@ import React from 'react';
 import { ENTITY } from '../util/Constant';
 import { countUserStatus, next } from '../util/Count';
 import DataLoader from './table/DataLoader';
-import { Typography, Chip } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { renderProgressColor, renderStatusColor, renderStatusLabel } from '../util/DecoratorConstant'
-import { Progress } from 'reactstrap';
+import { Badge, Progress, UncontrolledTooltip } from 'reactstrap';
 
 function ManagerStatusBar(props) {
 
   const renderItem = (item) => {
     return (
-      <div className='mr-3'>
+      <div className='mr-5'>
         <div>
           <Typography variant='h6'>{item.value}</Typography>
         </div>
@@ -21,10 +21,13 @@ function ManagerStatusBar(props) {
     )
   }
 
-  const renderProgressItem = (item) => {
-    console.log(item);
+  const renderProgressItem = (item, data) => {
     return (
-      <Progress bar color={renderProgressColor(item.label)} value={item.value} />
+      <Progress className={`progress-bar progress-${item.label}`} bar color={renderProgressColor(item.label)} value={item.value * 100 / data.length} >
+        <UncontrolledTooltip placement="top" target={`.progress-${item.label}`} fade>
+          {item.value}
+        </UncontrolledTooltip>
+      </Progress>
     )
   }
 
@@ -35,9 +38,11 @@ function ManagerStatusBar(props) {
         <Typography align='left' variant='h5'>Thống kê</Typography>
         <div className="d-flex">
           {status.map(renderItem)}
-          <Progress multi>
-            {status.map(renderProgressItem)}
-          </Progress>
+          <div className='flex-grow-1'>
+            <Progress multi>
+              {status.map((item) => renderProgressItem(item, data))}
+            </Progress>
+          </div>
         </div>
       </>
     )
