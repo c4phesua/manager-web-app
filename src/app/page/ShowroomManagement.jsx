@@ -1,11 +1,12 @@
 import { Button, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CreateShowroomDialog from '../component/dialog/CreateShowroomDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME, ROLE } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
+import Services from '../util/Services'
 import Error from './Error';
 
 const ShowroomManagement = (props) => {
@@ -13,19 +14,19 @@ const ShowroomManagement = (props) => {
   document.title = PAGE_NAME.SHOWROOM_MANAGEMENT;
 
   const [createShowroomDialogOpen, setCreateShowroomDialogOpen] = useState(false);
-
+  const [showroom, setShowroom] = useState();
 
   const { user } = props;
   const entity = ENTITY.SHOWROOM;
 
-  const columnMapping = [
-    new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
-    new TableColumnDataMapping('Tên', 'name'),
-    new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
-    new TableColumnDataMapping('Địa chỉ', 'address'),
-    new TableColumnDataMapping('Id người quản lý', 'managerId'),
-    new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
-  ]
+  useEffect(() => {
+    if (user.showroomId) {
+      Services.getShowroom(2)
+      .then((response) => {
+        console.log(response);
+      })
+    }
+  }, [])
 
   if (user.role === ROLE.MANAGER) {
     if (!user.showroomId) {
@@ -35,7 +36,9 @@ const ShowroomManagement = (props) => {
     }
     return (
       <div>
-        showroom
+        <Typography variant='h3' align='left'>
+          {PAGE_NAME.SHOWROOM_MANAGEMENT}
+        </Typography>
 
       </div>
     )
@@ -48,6 +51,15 @@ const ShowroomManagement = (props) => {
   const handleOpenCreateManagerDialog = () => {
     setCreateShowroomDialogOpen(true);
   }
+
+  const columnMapping = [
+    new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
+    new TableColumnDataMapping('Tên', 'name'),
+    new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
+    new TableColumnDataMapping('Địa chỉ', 'address'),
+    new TableColumnDataMapping('Id người quản lý', 'managerId'),
+    new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
+  ]
 
   const renderCreateShowroomButton = () => {
     return (
@@ -68,11 +80,11 @@ const ShowroomManagement = (props) => {
         useSearchText
         entity={entity}
         size={5}
-        columnMapping={columnMapping} 
+        columnMapping={columnMapping}
         usePagination
         useFilter
       />
-      {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen}/>}
+      {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen} />}
     </div>
   );
 }
