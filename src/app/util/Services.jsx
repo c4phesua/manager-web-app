@@ -7,7 +7,7 @@ const Services = {
   },
 
   login(user) {
-    return http.post(URL_PERFIX + Apis.login, user);
+    return http.post(URL_PERFIX + Apis.login, user, {entity: 'STAFF'});
   },
 
   search(entity, params) {
