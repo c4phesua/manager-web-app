@@ -9,3 +9,8 @@
 .MuiToolbar-regular.top-navbar {
   min-height: 72px;
 }
+
+.dashboard-container {
+  overflow: auto;
+  max-height: 100vh;
+}
