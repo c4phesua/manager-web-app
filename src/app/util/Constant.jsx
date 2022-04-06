@@ -23,7 +23,7 @@ export const MESSAGE = {
 };
 
 export const PAGE_NAME = {
-  DASHBOARD: 'Bảng điều khiển',
+  DASHBOARD: 'Thống kê',
   HR_MANAGEMENT: 'Quản lý nhân sự',
   MANAGER: 'Nhân viên quản lý',
   CONSULTANT: 'Nhân viên hỗ trợ',

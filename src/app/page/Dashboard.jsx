@@ -18,11 +18,6 @@ const Dashboard = (props) => {
 
   return (
     <>
-      <Head>
-        <title>
-          Dashboard | Material Kit
-        </title>
-      </Head>
       <PerfectScrollbar>
         <Box
           component="main"
