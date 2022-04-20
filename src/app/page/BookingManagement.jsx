@@ -14,6 +14,12 @@ const BookingManagement = (props) => {
 
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
+    new TableColumnDataMapping('Dịch vụ', 'package.name'),
+    new TableColumnDataMapping('Giá tiền', 'price', undefined, 'text-center'),
+    new TableColumnDataMapping('Tổng giá tiền', 'totalPrice', undefined, 'text-center'),
+    new TableColumnDataMapping('Đã trả', 'paid'),
+    new TableColumnDataMapping('Phương thức thanh toán', 'paymentType'),
+    new TableColumnDataMapping('Trạng thái', 'status'),
   ]
 
   return (
