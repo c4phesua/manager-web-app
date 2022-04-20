@@ -35,7 +35,7 @@ const PackageManagement = (props) => {
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Tên', 'name'),
     new TableColumnDataMapping('Địa điểm', 'location'),
-    new TableColumnDataMapping('Giá dự tính', 'price'),
+    new TableColumnDataMapping('Giá dự tính', 'price', undefined, 'text-center'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 

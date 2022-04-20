@@ -38,7 +38,7 @@ const LeftSideBar = ({ user }) => {
 
   const renderUserManagement = () => {
     return (
-      <SubMenu title={PAGE_NAME.HR_MANAGEMENT} icon={<Group />} open={isSubmenuOpen}>
+      <SubMenu title={PAGE_NAME.HR_MANAGEMENT} icon={<Group />} defaultOpen={isSubmenuOpen()}>
         {role === ROLE.ADMIN &&
           <MenuItem active={isActive(RouteConstants.managers) || isActive(RouteConstants.manager)} icon={<SupervisedUserCircle />}>{PAGE_NAME.MANAGER} <Link to={RouteConstants.managers} /></MenuItem>}
         <MenuItem active={isActive(RouteConstants.consultants)} icon={<AccountCircle />}>{PAGE_NAME.CONSULTANT}<Link to={RouteConstants.consultants} /></MenuItem>
