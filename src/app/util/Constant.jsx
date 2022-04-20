@@ -55,4 +55,5 @@ export const ENTITY = {
   SHOWROOM: 'showroom',
   PACKAGE: 'package',
   BOOKING: 'booking',
+  STYLE: 'style',
 }

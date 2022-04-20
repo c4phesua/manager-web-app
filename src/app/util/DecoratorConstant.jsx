@@ -13,6 +13,16 @@ export const idDecorator = (name, row, entity) => {
   )
 }
 
+export const imageDecorator = (name, row) => {
+  const url = get(row, name, '');
+  const alt = get(row, 'name', '');
+  return (
+   <div>
+     <img className='table-image-decorator' alt={alt} src={url} title={alt} />
+   </div>
+  )
+}
+
 export const mailDecorator = (name, row) => {
   const email = get(row, name, '');
   return (
