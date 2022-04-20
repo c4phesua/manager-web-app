@@ -1,6 +1,8 @@
 import { get } from 'lodash';
 import StatusSwitch from '../component/StatusSwitch';
 import { STATUS } from './Constant';
+import Services from './Services';
+import Notification from './Toast';
 
 export const idDecorator = (name, row, entity) => {
   const id = get(row, name, '');
@@ -63,8 +65,12 @@ export const renderProgressColor = (status) => {
 export const statusDecorator = (name, row, entity) => {
   const status = get(row, name, '');
   // const checked = status === STATUS.ENABLE;
-  const onStatusChange = (val) => {
-    console.log('call service', val);
+  const id = get(row, 'id', '');
+  const onStatusChange = (value) => {
+    Services.updateStatus(entity, id, value)
+    .then(() => {
+      Notification.pushSuccess(`Cập nhật trạng thái thành công`);
+    })
   }
   return (
     <div>

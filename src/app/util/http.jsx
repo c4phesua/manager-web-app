@@ -3,19 +3,23 @@ import Notification from './Toast';
 
 const http = {
 
-  get(url, data, params, errorHandler, headers) {
+  get({ url, data, params, errorHandler, headers }) {
     return this.send('get', url, data, params, errorHandler, headers);
   },
 
-  post(url, data, params, errorHandler, headers) {
+  post({ url, data, params, errorHandler, headers }) {
     return this.send('post', url, data, params, errorHandler, headers);
   },
 
-  put(url, data, params, errorHandler, headers) {
+  put({ url, data, params, errorHandler, headers }) {
     return this.send('put', url, data, params, errorHandler, headers);
   },
 
-  delete(url, data, params, errorHandler, headers) {
+  patch({ url, data, params, errorHandler, headers }) {
+    return this.send('patch', url, data, params, errorHandler, headers);
+  },
+
+  delete({ url, data, params, errorHandler, headers }) {
     return this.send('delete', url, data, params, errorHandler, headers);
   },
 
@@ -35,7 +39,7 @@ const http = {
     return new Promise((resolve, reject) => {
       axios(config)
         .then((response) => resolve(response))
-        .catch(({response, message, request}) => {
+        .catch(({ response, message, request }) => {
           if (errorHandler) {
             errorHandler(response);
           } else {

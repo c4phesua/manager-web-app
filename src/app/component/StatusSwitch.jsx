@@ -3,22 +3,23 @@ import { Switch } from '@material-ui/core';
 import { STATUS } from '../util/Constant';
 import { renderStatusColor, renderStatusLabel } from '../util/DecoratorConstant';
 
-const StatusSwitch = ({status, entity, onStatusChange}) => {
+const StatusSwitch = ({ status, entity, onStatusChange }) => {
   const [statusLabel, setStatusLabel] = useState(renderStatusLabel(status));
   const [checked, setChecked] = useState(status === STATUS.ENABLE);
   const [statusColor, setStatusColor] = useState(renderStatusColor(status));
+
+  const getStatus = (value) => {
+    return value ? STATUS.ENABLE : STATUS.DISABLE;
+  }
+
   const handleOnChange = (e) => {
     const value = e.target.checked;
+    const status = getStatus(value);
     setChecked(value);
-    if (value) {
-      setStatusLabel(renderStatusLabel(STATUS.ENABLE))
-      setStatusColor(renderStatusColor(STATUS.ENABLE))
-    } else if (!value) {
-      setStatusLabel(renderStatusLabel(STATUS.DISABLE))
-      setStatusColor(renderStatusColor(STATUS.DISABLE))
-    }
+    setStatusLabel(renderStatusLabel(status))
+    setStatusColor(renderStatusColor(status))
     if (onStatusChange) {
-      onStatusChange(value);
+      onStatusChange(status);
     }
   }
   return (
