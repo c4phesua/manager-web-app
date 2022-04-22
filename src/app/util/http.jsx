@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Notification from './Toast';
+import MAuth from '../model/MAuth';
 
 const http = {
 
@@ -25,6 +26,7 @@ const http = {
 
   //try to catch error in this param
   send(method, url, data, params, errorHandler, headers) {
+    console.log(localStorage.getItem("JWT"));
     let config = {
       headers: {
         'Accept': 'application/json',
@@ -40,6 +42,9 @@ const http = {
       axios(config)
         .then((response) => resolve(response))
         .catch(({ response, message, request }) => {
+          if (response.status === 401) {
+            MAuth.logout();
+          }
           if (errorHandler) {
             errorHandler(response);
           } else {
