@@ -56,4 +56,10 @@ export const ENTITY = {
   PACKAGE: 'package',
   BOOKING: 'booking',
   STYLE: 'style',
+  ADDITIONAL_ITEM: 'addition-item'
+}
+
+export const PAYMENT_TYPE = {
+  MOMO: 'MOMO',
+  PAYPAL: 'PAYPAL',
 }

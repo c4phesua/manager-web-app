@@ -90,7 +90,7 @@ const LeftSideBar = ({ user }) => {
     return (
       <SubMenu title={PAGE_NAME.SERVICE_MANAGEMENT} icon={<RoomService />} defaultOpen={isPackageManagementOpen()}>
         <MenuItem active={isActive(RouteConstants.packages) || isActive(RouteConstants.manager)} icon={<PhotoCamera />}>{PAGE_NAME.PACKAGE_MANAGEMENT} <Link to={RouteConstants.packages} /></MenuItem>
-        <MenuItem active={isActive(RouteConstants.consultants)} icon={<NewReleases />}>{PAGE_NAME.ADDITIONAL_ITEM_MANAGEMENT}<Link to={RouteConstants.additionalItems} /></MenuItem>
+        <MenuItem active={isActive(RouteConstants.additionalItems)} icon={<NewReleases />}>{PAGE_NAME.ADDITIONAL_ITEM_MANAGEMENT}<Link to={RouteConstants.additionalItems} /></MenuItem>
       </SubMenu>
     );
   }

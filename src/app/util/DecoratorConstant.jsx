@@ -1,6 +1,7 @@
 import { get } from 'lodash';
 import StatusSwitch from '../component/StatusSwitch';
-import { STATUS } from './Constant';
+import { MomoIcon, PaypalIcon } from '../images/Icon';
+import { PAYMENT_TYPE, STATUS } from './Constant';
 import Services from './Services';
 import Notification from './Toast';
 
@@ -85,6 +86,40 @@ export const statusDecorator = (name, row, entity) => {
   return (
     <div>
       <StatusSwitch entity={entity} onStatusChange={onStatusChange} status={status} />
+    </div>
+  )
+}
+
+const iconByPayment = (paymentType) => {
+  if (paymentType === PAYMENT_TYPE.MOMO) {
+    return <MomoIcon style={{width: 80, height: 40}} />
+  }
+  if (paymentType === PAYMENT_TYPE.PAYPAL) {
+    return <PaypalIcon style={{width: 80, height: 40}}/>
+  }
+  return <PaypalIcon style={{width: 80, height: 40}}/>
+}
+
+export const paymentTypeDecorator = (name, row) => {
+  const paymentType = get(row, name);
+  const icon = iconByPayment(paymentType);
+  return (
+    <div>
+      {icon}
+    </div>
+  )
+}
+
+export const currencyDecorator = (name, row) => {
+  const price = get(row, name);
+  const formatter = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
+  const currency = formatter.format(price);
+  return (
+    <div>
+      {currency}
     </div>
   )
 }
