@@ -14,6 +14,10 @@ const Services = {
     return http.get({ url: `${URL_PERFIX}/${entity}`, params });
   },
 
+  searchEntity(entity, id) {
+    return http.get({ url: `${URL_PERFIX}/${entity}/${id}` });
+  },
+
   createManager(manager) {
     return http.post({ url: URL_PERFIX + Apis.manager, data: manager });
   },

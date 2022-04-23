@@ -1,5 +1,6 @@
-import { Typography } from '@material-ui/core';
+import { Card, Typography } from '@material-ui/core';
 import React from 'react';
+import { CardBody } from 'reactstrap';
 import { PAGE_NAME } from '../util/Constant';
 
 const Setting = (props) => {
@@ -7,7 +8,11 @@ const Setting = (props) => {
   return (
     <div>
       <Typography variant='h3' align='left'>{PAGE_NAME.SETTING}</Typography>
-      
+      <Card>
+        <CardBody>
+          
+        </CardBody>
+      </Card>
     </div>
   );
 }
