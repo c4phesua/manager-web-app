@@ -18,7 +18,6 @@ import ManagerManagement from './app/page/ManagerManagement';
 import BookingManagement from './app/page/BookingManagement';
 import ShowroomManagement from './app/page/ShowroomManagement';
 import PackageManagement from './app/page/PackageManagement';
-import PromotionManagement from './app/page/PromotionManagement';
 import StyleManagement from './app/page/StyleManagement';
 import Profile from './app/page/Profile';
 import Setting from './app/page/Setting';
@@ -26,6 +25,7 @@ import ManagerDetails from './app/page/ManagerDetails';
 import ConsultantManagement from './app/page/ConsultantManagement';
 import ConsultantDetails from './app/page/ConsultantDetails';
 import ActiveAccount from './app/page/ActiveAccount';
+import AdditionalItems from './app/page/AdditionalItems';
 
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
             <AuthorizedRoute exact path={RouteConstants.showrooms} component={ShowroomManagement} />
             <AuthorizedRoute exact path={RouteConstants.bookings} component={BookingManagement}/>
             <AuthorizedRoute exact path={RouteConstants.packages} component={PackageManagement}/>
-            <AuthorizedRoute exact path={RouteConstants.promotions} component={PromotionManagement}/>
+            <AuthorizedRoute exact path={RouteConstants.additionalItems} component={AdditionalItems}/>
             <AuthorizedRoute exact path={RouteConstants.styles} component={StyleManagement}/>
             <AuthorizedRoute exact path={RouteConstants.profile} component={Profile}/>
             <AuthorizedRoute exact path={RouteConstants.setting} component={Setting}/>

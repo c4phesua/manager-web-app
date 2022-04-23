@@ -10,6 +10,11 @@ export const STATUS = {
   ENABLE: 'ENABLE',
   DISABLE: 'DISABLE',
   UNCONFIRMED: 'UNCONFIRMED',
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  ONBOARD: 'ONBOARD',
+  FINISH: 'FINISH',
+  CANCELED: 'CANCELED',
   ALL: 'ALL',
 }
 
@@ -29,7 +34,9 @@ export const PAGE_NAME = {
   CONSULTANT: 'Nhân viên hỗ trợ',
   SHOWROOM_MANAGEMENT: 'Quản lý chi nhánh',
   BOOKING_MANAGEMENT: 'Quản lý đặt lịch',
-  PACKAGE_MANAGEMENT: 'Quản lý gói dịch vụ',
+  SERVICE_MANAGEMENT: 'Quản lý dịch vụ',
+  PACKAGE_MANAGEMENT: 'Gói chụp ảnh',
+  ADDITIONAL_ITEM_MANAGEMENT: 'Dịch vụ đi kèm',
   PROMOTION_MANAGEMENT: 'Quản lý khuyến mãi',
   STYLE_MANAGEMENT: 'Quản lý kiểu trang điểm',
   PROFILE: 'Trang cá nhân',
@@ -53,4 +60,16 @@ export const ENTITY = {
   SHOWROOM: 'showroom',
   PACKAGE: 'package',
   BOOKING: 'booking',
+  STYLE: 'style',
+  ADDITIONAL_ITEM: 'addition-item'
 }
+
+export const PAYMENT_TYPE = {
+  MOMO: 'MOMO',
+  PAYPAL: 'PAYPAL',
+}
+
+export const SIMPLE_FILTER_OPTIONS = [
+    STATUS.ENABLE,
+    STATUS.DISABLE,
+]

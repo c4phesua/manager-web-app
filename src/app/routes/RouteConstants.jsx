@@ -20,6 +20,9 @@ const manager = managers + id;
 const consultants = '/consultant';
 const consultant = consultants + id;
 
+const additionalItems = '/additional-item';
+const additionalItem = additionalItems + id;
+
 const active = '/active';
 const activeAccount = active + token;
 
@@ -40,6 +43,8 @@ const RouteConstants = {
   manager,
   setting,
   active,
+  additionalItem,
+  additionalItems
 }
 
 export default RouteConstants;

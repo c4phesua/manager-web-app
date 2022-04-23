@@ -5,7 +5,7 @@ import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
 import UserStatusBar from '../component/UserStatusBar';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME } from '../util/Constant';
+import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, mailDecorator, statusDecorator,viewProfile } from '../util/DecoratorConstant';
 
@@ -60,6 +60,7 @@ const ManagerManagement = (props) => {
         columnMapping={columnMapping}
         usePagination
         useFilter
+        filterOptions={SIMPLE_FILTER_OPTIONS}
       />
       {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>

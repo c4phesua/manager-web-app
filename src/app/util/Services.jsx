@@ -3,39 +3,43 @@ import Apis from './Apis';
 const URL_PERFIX = process.env.REACT_APP_API;
 const Services = {
   getMe() {
-    return http.get(URL_PERFIX + Apis.userMe);
+    return http.get({ url: URL_PERFIX + Apis.userMe });
   },
 
   login(user) {
-    return http.post(URL_PERFIX + Apis.login, user, {entity: 'STAFF'});
+    return http.post({ url: URL_PERFIX + Apis.login, data: user, params: { entity: 'STAFF' } });
   },
 
   search(entity, params) {
-    return http.get(`${URL_PERFIX}/${entity}`, null, params);
+    return http.get({ url: `${URL_PERFIX}/${entity}`, params });
   },
 
   createManager(manager) {
-    return http.post(URL_PERFIX + Apis.manager, manager);
+    return http.post({ url: URL_PERFIX + Apis.manager, data: manager });
   },
 
   createConsultant(consultant) {
-    return http.post(URL_PERFIX + Apis.consultant, consultant);
+    return http.post({ url: URL_PERFIX + Apis.consultant, data: consultant });
   },
 
   createShowroom(showroom) {
-    return http.post(URL_PERFIX + Apis.showroom, showroom);
+    return http.post({ url: URL_PERFIX + Apis.showroom, data: showroom });
   },
 
   createPackage(packAge) {
-    return http.post(URL_PERFIX + Apis.packAge, packAge);
+    return http.post({ url: URL_PERFIX + Apis.packAge, data: packAge });
   },
 
   uploadFile(file) {
-    return http.post(URL_PERFIX + Apis.uploadFile, file, null, null, {'Content-Type': 'image/jpg'})
+    return http.post({ url: URL_PERFIX + Apis.uploadFile, data: file, headers: { 'Content-Type': 'image/jpg' } })
   },
 
   getShowroom(showroomId) {
-    return http.get(URL_PERFIX + Apis.showroom + `/${showroomId}`);
+    return http.get({ url: URL_PERFIX + Apis.showroom + `/${showroomId}` });
+  },
+
+  updateStatus(entity, id, status) {
+    return http.patch({ url: `${URL_PERFIX}/${entity}/${id}`, params: { status } })
   }
 };
 

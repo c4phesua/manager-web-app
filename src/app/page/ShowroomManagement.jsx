@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CreateShowroomDialog from '../component/dialog/CreateShowroomDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME, ROLE } from '../util/Constant';
+import { ENTITY, PAGE_NAME, ROLE, SIMPLE_FILTER_OPTIONS } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 import Services from '../util/Services'
@@ -83,6 +83,7 @@ const ShowroomManagement = (props) => {
         columnMapping={columnMapping}
         usePagination
         useFilter
+        filterOptions={SIMPLE_FILTER_OPTIONS}
       />
       {createShowroomDialogOpen && <CreateShowroomDialog handleClose={handleCloseCreateShowroomDialog} open={createShowroomDialogOpen} />}
     </div>

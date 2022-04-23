@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ENTITY, MESSAGE, PAGE_NAME, ROLE } from '../util/Constant';
+import { ENTITY, MESSAGE, PAGE_NAME, ROLE, SIMPLE_FILTER_OPTIONS, STATUS } from '../util/Constant';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import DataTable from '../component/table/DataTable';
 import { Button, Typography } from '@material-ui/core';
@@ -57,7 +57,7 @@ const ConsultantManagement = (props) => {
   const handleOpenCreateConsultantDialog = () => {
     setCreateConsultantDialogOpen(true);
   }
-
+  
   return (
     <div>
       <Typography variant='h3' align='left'>
@@ -76,6 +76,7 @@ const ConsultantManagement = (props) => {
         size={10}
         columnMapping={columnMapping}
         useFilter
+        filterOptions={SIMPLE_FILTER_OPTIONS}
       />
       {createConsultantDialogOpen && <CreateConsultantDialog handleClose={handleCloseCreateConsultantDialog} open={createConsultantDialogOpen} />}
     </div>

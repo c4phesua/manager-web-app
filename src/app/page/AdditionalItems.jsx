@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import CreatePackageDialog from '../component/dialog/CreatePackageDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS, STATUS } from '../util/Constant';
+import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS } from '../util/Constant';
 import { next } from '../util/Count';
-import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
+import { currencyDecorator, idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
-const PackageManagement = (props) => {
+const AdditionalItems = (props) => {
 
   document.title = PAGE_NAME.PACKAGE_MANAGEMENT;
 
@@ -29,20 +29,18 @@ const PackageManagement = (props) => {
     )
   }
 
-  const entity = ENTITY.PACKAGE;
+  const entity = ENTITY.ADDITIONAL_ITEM;
 
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
-    new TableColumnDataMapping('Tên', 'name'),
-    new TableColumnDataMapping('Địa điểm', 'location'),
-    new TableColumnDataMapping('Giá dự tính', 'price', undefined, 'text-center'),
+    new TableColumnDataMapping('Tên', 'itemName'),
+    new TableColumnDataMapping('Giá dự tính', 'price', (name, row) => currencyDecorator(name, row), 'text-center'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
-
   return (
     <div>
-      <Typography variant='h3' align='left'>{PAGE_NAME.PACKAGE_MANAGEMENT}</Typography>
+      <Typography variant='h3' align='left'>{PAGE_NAME.ADDITIONAL_ITEM_MANAGEMENT}</Typography>
       <DataTable
         key={next()}
         renderButton={renderCreatePackageButton}
@@ -51,12 +49,12 @@ const PackageManagement = (props) => {
         size={5}
         columnMapping={columnMapping} 
         usePagination
-        filterOptions={SIMPLE_FILTER_OPTIONS}
         useFilter
+        filterOptions={SIMPLE_FILTER_OPTIONS}
       />
       {createPackageDialogOpen && <CreatePackageDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}
     </div>
   );
 }
 
-export default PackageManagement;
+export default AdditionalItems;
