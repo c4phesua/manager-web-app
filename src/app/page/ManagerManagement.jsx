@@ -5,7 +5,7 @@ import CreateManagerDialog from '../component/dialog/CreateManagerDialog';
 import UserStatusBar from '../component/UserStatusBar';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME } from '../util/Constant';
+import { ENTITY, PAGE_NAME, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, mailDecorator, statusDecorator } from '../util/DecoratorConstant';
 
@@ -42,6 +42,11 @@ const ManagerManagement = (props) => {
     setCreateManagerDialogOpen(true);
   }
 
+  const filterOptions = [
+    STATUS.ENABLE,
+    STATUS.DISABLE,
+  ]
+
   return (
     <div className="content-layout">
       <Typography variant='h3' align='left'>
@@ -59,6 +64,7 @@ const ManagerManagement = (props) => {
         columnMapping={columnMapping}
         usePagination
         useFilter
+        filterOptions={filterOptions}
       />
       {createManagerDialogOpen && <CreateManagerDialog handleClose={handleCloseCreateManagerDialog} open={createManagerDialogOpen} />}
     </div>

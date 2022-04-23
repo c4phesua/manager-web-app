@@ -13,6 +13,7 @@ const DataLoader = ({
   additionalParams,
   renderData,
   renderButton,
+  filterOptions,
   getAll = false,
   useSearchText = false,
   usePagination = false,
@@ -73,9 +74,7 @@ const DataLoader = ({
         </div>
         <select style={{ border: 'none' }} defaultValue={STATUS.ALL} variant='standard' onChange={onFilterChange}>
           <option value={STATUS.ALL}>Tất cả</option>
-          <option value={STATUS.DISABLE}>{renderStatusLabel(STATUS.DISABLE)}</option>
-          <option value={STATUS.ENABLE}>{renderStatusLabel(STATUS.ENABLE)}</option>
-          <option value={STATUS.UNCONFIRMED}>{renderStatusLabel(STATUS.UNCONFIRMED)}</option>
+          {filterOptions && filterOptions.map((option) => <option value={option}>{renderStatusLabel(option)}</option>)}
         </select>
       </div>
     )
