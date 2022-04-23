@@ -7,7 +7,7 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME } from '../util/Constant';
 import { next } from '../util/Count';
-import { idDecorator, mailDecorator, statusDecorator } from '../util/DecoratorConstant';
+import { idDecorator, mailDecorator, statusDecorator,viewProfile } from '../util/DecoratorConstant';
 
 const ManagerManagement = (props) => {
 
@@ -24,6 +24,7 @@ const ManagerManagement = (props) => {
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
+    new TableColumnDataMapping('Thông tin', 'profile', (name,row) => viewProfile(name,row,entity),'text-center' ),
   ]
 
   const renderAddManagerButton = () => {

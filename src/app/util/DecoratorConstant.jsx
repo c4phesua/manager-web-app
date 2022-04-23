@@ -72,3 +72,14 @@ export const statusDecorator = (name, row, entity) => {
     </div>
   )
 }
+
+export const viewProfile = (name, row, entity) => {
+  const id = get(row, name, '');
+  console.log('aaaa')
+  console.log(row)
+  return (
+    <div>
+      <a color='primary' href={`/${entity}/${row.id}`}>Thông tin</a>
+    </div>
+  )
+}
