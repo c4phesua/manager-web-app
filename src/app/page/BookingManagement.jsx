@@ -3,7 +3,7 @@ import React from 'react';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { MomoIcon, PaypalIcon } from '../images/Icon';
-import { ENTITY, PAGE_NAME } from '../util/Constant';
+import { ENTITY, PAGE_NAME, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
 import { currencyDecorator, idDecorator, paymentTypeDecorator } from '../util/DecoratorConstant';
 
@@ -23,6 +23,14 @@ const BookingManagement = (props) => {
     new TableColumnDataMapping('Trạng thái', 'status'),
   ]
 
+  const filterOptions = [
+    STATUS.PENDING,
+    STATUS.PROCESSING,
+    STATUS.ONBOARD,
+    STATUS.FINISH,
+    STATUS.CANCELED
+  ]
+
   return (
     <div>
       <Typography variant='h3' align='left'>
@@ -37,6 +45,7 @@ const BookingManagement = (props) => {
         columnMapping={columnMapping}
         usePagination
         useFilter
+        filterOptions={filterOptions}
       />
     </div>
   );

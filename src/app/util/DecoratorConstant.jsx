@@ -42,6 +42,16 @@ export const renderStatusLabel = (status) => {
       return 'Ngưng hoạt động'
     case STATUS.ENABLE:
       return 'Đã kích hoạt'
+    case STATUS.CANCELED:
+      return 'Đã hủy'
+    case STATUS.FINISH:
+      return 'Đã hoàn thành'
+    case STATUS.PROCESSING:
+      return 'Đang xử lý'
+    case STATUS.PENDING:
+      return 'Đang chờ'
+    case STATUS.ONBOARD:
+      return 'Đang thực hiện'
     default:
       return;
   }
