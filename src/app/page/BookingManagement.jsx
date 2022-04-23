@@ -5,7 +5,7 @@ import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { MomoIcon, PaypalIcon } from '../images/Icon';
 import { ENTITY, PAGE_NAME, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
-import { currencyDecorator, idDecorator, paymentTypeDecorator } from '../util/DecoratorConstant';
+import { currencyDecorator, idDecorator, paymentTypeDecorator, statusTextDecorator } from '../util/DecoratorConstant';
 
 const BookingManagement = (props) => {
 
@@ -20,7 +20,7 @@ const BookingManagement = (props) => {
     new TableColumnDataMapping('Tổng giá tiền', 'totalPrice', currencyDecorator, 'text-center'),
     new TableColumnDataMapping('Đã trả', 'paid', currencyDecorator),
     new TableColumnDataMapping('Phương thức thanh toán', 'paymentType', paymentTypeDecorator),
-    new TableColumnDataMapping('Trạng thái', 'status'),
+    new TableColumnDataMapping('Trạng thái', 'status', statusTextDecorator),
   ]
 
   const filterOptions = [

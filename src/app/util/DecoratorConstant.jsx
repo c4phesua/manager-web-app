@@ -33,6 +33,16 @@ export const mailDecorator = (name, row) => {
   )
 }
 
+export const statusTextDecorator = (name, row) => {
+  const status = get(row, name, '');
+  console.log(renderStatusColor(status));
+  return (
+    <div className={renderStatusColor(status)}>
+      {renderStatusLabel(status)}
+    </div>
+  )
+}
+
 
 export const renderStatusLabel = (status) => {
   switch (status) {
@@ -60,11 +70,16 @@ export const renderStatusLabel = (status) => {
 export const renderStatusColor = (status) => {
   switch (status) {
     case STATUS.UNCONFIRMED:
+    case STATUS.CANCELED:
       return 'text-danger'
     case STATUS.DISABLE:
       return 'text-secondary'
     case STATUS.ENABLE:
+    case STATUS.FINISH:
       return 'text-success'
+    case STATUS.ONBOARD:
+    case STATUS.PROCESSING:
+      return 'text-primary'
     default:
       return;
   }
