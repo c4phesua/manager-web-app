@@ -5,7 +5,7 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME, ROLE, SIMPLE_FILTER_OPTIONS } from '../util/Constant';
 import { next } from '../util/Count';
-import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
+import { idDecorator, statusDecorator ,viewProfile} from '../util/DecoratorConstant';
 import Services from '../util/Services'
 import Error from './Error';
 
@@ -59,6 +59,7 @@ const ShowroomManagement = (props) => {
     new TableColumnDataMapping('Địa chỉ', 'address'),
     new TableColumnDataMapping('Id người quản lý', 'managerId'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
+    new TableColumnDataMapping('Thông tin', 'profile', (name,row) => viewProfile(name,row,entity),'text-center' ),
   ]
 
   const renderCreateShowroomButton = () => {

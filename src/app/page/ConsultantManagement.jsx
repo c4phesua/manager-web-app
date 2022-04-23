@@ -6,7 +6,7 @@ import { Button, Typography } from '@material-ui/core';
 import Error from './Error';
 import CreateConsultantDialog from '../component/dialog/CreateConsultantDialog';
 import { next } from '../util/Count';
-import { idDecorator, mailDecorator, statusDecorator } from '../util/DecoratorConstant';
+import { idDecorator, mailDecorator, statusDecorator,viewProfile } from '../util/DecoratorConstant';
 import UserStatusBar from '../component/UserStatusBar';
 
 
@@ -27,6 +27,7 @@ const ConsultantManagement = (props) => {
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
+    new TableColumnDataMapping('Thông tin', 'profile', (name,row) => viewProfile(name,row,entity),'text-center' ),
   ]
 
   const additionalParams = {

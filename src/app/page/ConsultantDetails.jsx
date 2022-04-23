@@ -46,17 +46,6 @@ const ConsultantDetails = (props) => {
                 <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text" class="form-control" placeholder="enter address line 1" value="" disabled /></div>
                 <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter address line 2" value="" disabled /></div>
               </div>
-              <div class="row mt-2 justify-content-between text-left">
-                <div class="col-md-12 "><label class="labels text-left">Showroom:</label>
-                  <select class="form-select form-select-sm" aria-label=".form-select-lg example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-
-                </div>
-              </div>
               <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Lưu thông tin</button></div>
             </div>
           </div>
