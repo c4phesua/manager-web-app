@@ -17,8 +17,6 @@ function ShowroomDetails(props) {
     getShowroom();
   }, [])
 
-  console.log(showroom);
-
   return (
     <div>
       <div class="container rounded bg-white mt-12 mb-12">
