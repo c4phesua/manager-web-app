@@ -63,3 +63,8 @@ export const PAYMENT_TYPE = {
   MOMO: 'MOMO',
   PAYPAL: 'PAYPAL',
 }
+
+export const SIMPLE_FILTER_OPTIONS = [
+    STATUS.ENABLE,
+    STATUS.DISABLE,
+]

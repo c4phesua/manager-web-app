@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CreatePackageDialog from '../component/dialog/CreatePackageDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME, STATUS } from '../util/Constant';
+import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
 import { idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
@@ -39,10 +39,6 @@ const PackageManagement = (props) => {
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
-  const filterOptions = [
-    STATUS.ENABLE,
-    STATUS.DISABLE,
-  ]
 
   return (
     <div>
@@ -55,7 +51,7 @@ const PackageManagement = (props) => {
         size={5}
         columnMapping={columnMapping} 
         usePagination
-        filterOptions={filterOptions}
+        filterOptions={SIMPLE_FILTER_OPTIONS}
         useFilter
       />
       {createPackageDialogOpen && <CreatePackageDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}

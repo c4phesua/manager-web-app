@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CreatePackageDialog from '../component/dialog/CreatePackageDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
-import { ENTITY, PAGE_NAME } from '../util/Constant';
+import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS } from '../util/Constant';
 import { next } from '../util/Count';
 import { currencyDecorator, idDecorator, statusDecorator } from '../util/DecoratorConstant';
 
@@ -50,6 +50,7 @@ const AdditionalItems = (props) => {
         columnMapping={columnMapping} 
         usePagination
         useFilter
+        filterOptions={SIMPLE_FILTER_OPTIONS}
       />
       {createPackageDialogOpen && <CreatePackageDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}
     </div>
