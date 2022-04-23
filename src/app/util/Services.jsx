@@ -48,6 +48,9 @@ const Services = {
 
   getConfiguration(key) {
     return http.get({ url: URL_PERFIX + Apis.configuration, params: { key } })
+  },
+  updateConfiguration(key, value) {
+    return http.put({ url: URL_PERFIX + Apis.configuration, params: { key, value } })
   }
 };
 
