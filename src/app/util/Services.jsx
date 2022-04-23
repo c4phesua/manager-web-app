@@ -44,6 +44,10 @@ const Services = {
 
   updateStatus(entity, id, status) {
     return http.patch({ url: `${URL_PERFIX}/${entity}/${id}`, params: { status } })
+  },
+
+  getConfiguration(key) {
+    return http.get({ url: URL_PERFIX + Apis.configuration, params: { key } })
   }
 };
 

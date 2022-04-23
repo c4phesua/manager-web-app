@@ -26,7 +26,6 @@ const http = {
 
   //try to catch error in this param
   send(method, url, data, params, errorHandler, headers) {
-    console.log(localStorage.getItem("JWT"));
     let config = {
       headers: {
         'Accept': 'application/json',
