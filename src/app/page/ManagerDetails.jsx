@@ -38,7 +38,7 @@ const ManagerDetails = (props) => {
 
                     </div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Lưu thông tin</button></div>
             </div>
         </div>
         
