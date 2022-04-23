@@ -19,8 +19,6 @@ const ConsultantDetails = (props) => {
     getConsultant();
   }, [])
 
-  console.log(consultant);
-
   return (
     <div>
       <div class="container rounded bg-white mt-12 mb-12">
