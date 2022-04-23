@@ -26,6 +26,10 @@ const additionalItem = additionalItems + id;
 const active = '/active';
 const activeAccount = active + token;
 
+const showroom = showrooms + id;
+const booking = bookings + id;
+const pkg = packages + id;
+
 const RouteConstants = {
   root,
   login,
@@ -44,7 +48,10 @@ const RouteConstants = {
   setting,
   active,
   additionalItem,
-  additionalItems
+  additionalItems,
+  showroom,
+  booking,
+  pkg
 }
 
 export default RouteConstants;
