@@ -1,6 +1,8 @@
 import { Button, DialogActions, DialogContent, Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label } from 'reactstrap';
+import Services from '../../util/Services';
+import Notification from '../../util/Toast';
 import PackageProfile from '../PackageProfile';
 import CloseableDialogComponent from './CloseableDialogComponent';
 import { getInitialPackageForm } from './FormHelper';
@@ -23,6 +25,12 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
   }
 
   const onDialogSubmit = (e) => {
+    e.preventDefault();
+    Services.createPackage(newPackage)
+    .then(() => {
+      Notification.pushSuccess(`Tạo mới gói dịch vụ thành công`);
+      handleClose();
+    })
 
   }
 
