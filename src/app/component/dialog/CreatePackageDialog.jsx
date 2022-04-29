@@ -1,6 +1,7 @@
 import { Button, DialogActions, DialogContent, Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label } from 'reactstrap';
+import PackageProfile from '../PackageProfile';
 import CloseableDialogComponent from './CloseableDialogComponent';
 import { getInitialPackageForm } from './FormHelper';
 
@@ -39,7 +40,7 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
               md={6}
               xs={12}
             >
-              {/* <ShowroomProfile showroom={newShowroom} /> */}
+              <PackageProfile pkg={newPackage} />
             </Grid>
             <Grid
               item
