@@ -2,6 +2,7 @@ import { get } from 'lodash';
 import StatusSwitch from '../component/StatusSwitch';
 import { MomoIcon, PaypalIcon } from '../images/Icon';
 import { PAYMENT_TYPE, STATUS } from './Constant';
+import { toVND } from './Helper';
 import Services from './Services';
 import Notification from './Toast';
 
@@ -137,11 +138,7 @@ export const paymentTypeDecorator = (name, row) => {
 
 export const currencyDecorator = (name, row) => {
   const price = get(row, name);
-  const formatter = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-  });
-  const currency = formatter.format(price);
+  const currency = toVND(price);
   return (
     <div>
       {currency}

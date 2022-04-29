@@ -5,7 +5,7 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME, SIMPLE_FILTER_OPTIONS, STATUS } from '../util/Constant';
 import { next } from '../util/Count';
-import { idDecorator, statusDecorator ,viewProfile} from '../util/DecoratorConstant';
+import { currencyDecorator, idDecorator, statusDecorator ,viewProfile} from '../util/DecoratorConstant';
 
 const PackageManagement = (props) => {
 
@@ -35,7 +35,7 @@ const PackageManagement = (props) => {
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Tên', 'name'),
     new TableColumnDataMapping('Địa điểm', 'location'),
-    new TableColumnDataMapping('Giá dự tính', 'price', undefined, 'text-center'),
+    new TableColumnDataMapping('Giá dự tính', 'price', (name, row) => currencyDecorator(name, row), 'text-center'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
     new TableColumnDataMapping('Thông tin', 'profile', (name,row) => viewProfile(name,row,entity),'text-center' ),
   ]
