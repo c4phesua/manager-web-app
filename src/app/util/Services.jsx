@@ -51,6 +51,10 @@ const Services = {
   },
   updateConfiguration(key, value) {
     return http.put({ url: URL_PERFIX + Apis.configuration, params: { key, value } })
+  },
+
+  assignManager(showroomId, managerId) {
+    return http.post({ url: `${URL_PERFIX}${Apis.showroom}/${showroomId}`, data: { managerId } })
   }
 };
 
