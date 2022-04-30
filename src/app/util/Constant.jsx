@@ -28,7 +28,7 @@ export const MESSAGE = {
 };
 
 export const PAGE_NAME = {
-  DASHBOARD: 'Bảng điều khiển',
+  DASHBOARD: 'Thống kê',
   HR_MANAGEMENT: 'Quản lý nhân sự',
   MANAGER: 'Nhân viên quản lý',
   CONSULTANT: 'Nhân viên hỗ trợ',
@@ -61,7 +61,9 @@ export const ENTITY = {
   PACKAGE: 'package',
   BOOKING: 'booking',
   STYLE: 'style',
-  ADDITIONAL_ITEM: 'addition-item'
+  ADDITIONAL_ITEM: 'addition-item',
+  INCOME_STATISTIC: 'statistics/income',
+  STYLE_STATISTIC: 'statistics/style-num',
 }
 
 export const PAYMENT_TYPE = {
@@ -72,4 +74,13 @@ export const PAYMENT_TYPE = {
 export const SIMPLE_FILTER_OPTIONS = [
     STATUS.ENABLE,
     STATUS.DISABLE,
+]
+
+export const BASIC_COLOR = [
+  '#FF0000',
+  '#00FF00',
+  '#0000FF',
+  '#00FFFF',
+  '#FF00FF',
+  '#00008B',
 ]
