@@ -35,7 +35,7 @@ function StylePieChart(props) {
 
   return (
     <Card>
-      <Typography className='m-3' variant='h5' align='left'>Kiểu trang điểm</Typography>
+      <Typography className='m-3' variant='h6' align='left'>Kiểu trang điểm đã được sử dụng</Typography>
       <DataLoader entity={ENTITY.STYLE_STATISTIC} getAll renderData={renderData} />
     </Card>
   );

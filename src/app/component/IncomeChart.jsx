@@ -38,7 +38,7 @@ function IncomeChart(props) {
 
   return (
     <Card>
-      <Typography className='m-3' variant='h5' align='left'>Thu nhập</Typography>
+      <Typography className='m-3' variant='h6' align='left'>Thu nhập</Typography>
       <DataLoader entity={ENTITY.INCOME_STATISTIC} getAll renderData={renderData} additionalParams={additionalParams} />
     </Card>
   );
