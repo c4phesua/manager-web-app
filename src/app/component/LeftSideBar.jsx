@@ -72,7 +72,7 @@ const LeftSideBar = ({ user }) => {
     // ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.PACKAGE_MANAGEMENT, icon: <PhotoCamera />, link: RouteConstants.packages }),
     ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles }),
     { name: PAGE_NAME.PROFILE, icon: <Person />, link: RouteConstants.profile },
-    { name: PAGE_NAME.SETTING, icon: <Settings />, link: RouteConstants.setting },
+    ...Arrays.insertIf(role === ROLE.ADMIN,{ name: PAGE_NAME.SETTING, icon: <Settings />, link: RouteConstants.setting }),
   ];
 
 

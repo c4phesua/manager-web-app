@@ -1,9 +1,10 @@
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import { PAGE_NAME } from '../util/Constant';
+import { PAGE_NAME, STATUS } from '../util/Constant';
 import PerfectScrollbar from "react-perfect-scrollbar";
 import IncomeChart from '../component/IncomeChart';
 import StylePieChart from '../component/StylePieChart';
+import BookingStatusStatistic from '../component/BookingStatusStatistic';
 
 const Dashboard = (props) => {
 
@@ -27,12 +28,21 @@ const Dashboard = (props) => {
             >
               <Grid
                 item
+                lg={12}
+                sm={12}
+                xl={12}
+                xs={12}
+              >
+                <Typography variant='h4'>Các lịch chụp ảnh</Typography>
+              </Grid>
+              <Grid
+                item
                 lg={3}
                 sm={6}
                 xl={3}
                 xs={12}
               >
-                TODO Item 1
+                <BookingStatusStatistic status={STATUS.FINISH} />
               </Grid>
               <Grid
                 item
@@ -41,7 +51,7 @@ const Dashboard = (props) => {
                 sm={6}
                 xs={12}
               >
-                TODO Item 2
+                <BookingStatusStatistic status={STATUS.PENDING} />
               </Grid>
               <Grid
                 item
@@ -50,7 +60,16 @@ const Dashboard = (props) => {
                 sm={6}
                 xs={12}
               >
-                TODO Item 3
+                <BookingStatusStatistic status={STATUS.CANCELED} />
+              </Grid>
+              <Grid
+                item
+                xl={3}
+                lg={3}
+                sm={6}
+                xs={12}
+              >
+                <BookingStatusStatistic status={STATUS.ONBOARD} />
               </Grid>
               <Grid
                 item
@@ -77,7 +96,6 @@ const Dashboard = (props) => {
                 xl={3}
                 xs={12}
               >
-                TODO Item 6
               </Grid>
               <Grid
                 item
@@ -86,7 +104,6 @@ const Dashboard = (props) => {
                 xl={9}
                 xs={12}
               >
-                TODO Item 7
               </Grid>
             </Grid>
           </Container>

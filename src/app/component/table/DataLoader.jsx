@@ -12,6 +12,7 @@ const DataLoader = ({
   size,
   additionalParams,
   renderData,
+  renderCount,
   renderButton,
   filterOptions,
   getAll = false,
@@ -110,6 +111,13 @@ const DataLoader = ({
   }
 
   const showData = () => {
+    if (renderCount && !renderData) {
+      return (
+        <>
+          {data && renderCount && renderCount(data.totalElements)}
+        </>
+      )
+    }
     return (
       <>
         {data.content.length > 0 ? renderData(data.content) : 'Chưa có dữ liệu'}
@@ -135,7 +143,9 @@ const DataLoader = ({
           </div>}
         </div>
         {
-          data ? showData() : <Skeleton animation="wave" variant="rect" height={200}/>
+          data ?
+            showData() :
+            <Skeleton animation="wave" variant="rect" height={200} />
         }
 
       </>
