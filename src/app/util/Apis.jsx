@@ -10,6 +10,7 @@ const Apis = {
   configuration: '/configuration',
   style: '/style',
   checkImage: '/checkimage',
+  uploadBatch: '/files-upload/multi-files',
 }
 
 export default Apis;

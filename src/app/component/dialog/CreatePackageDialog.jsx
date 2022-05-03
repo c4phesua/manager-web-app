@@ -21,16 +21,50 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
   }
 
   const onFileChange = (e) => {
+    const files = e.target.files;
+    if (files.length > 0) {
+      console.log(files);
+      let temporaryImages = [];
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const tempImg = URL.createObjectURL(file);
+        temporaryImages = temporaryImages.concat(tempImg);
+      }
+      console.log(temporaryImages);
+      setNewPackage({
+        ...newPackage,
+        files: files,
+        temporaryImages: temporaryImages,
+      })
+    }
 
   }
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
-    Services.createPackage(newPackage)
-    .then(() => {
-      Notification.pushSuccess(`Tạo mới gói dịch vụ thành công`);
-      handleClose();
+    const formData = new FormData();
+    const { files } = newPackage;
+    for (let i = 0; i < files.length; i++) {
+      formData.append('file', files[i])
+    }
+    Services.uploadBatchFile(formData)
+    .then(({data}) => {
+      return data.content;
     })
+    .then((links) => {
+      const urls = links.map(link => {
+        return {
+          imageUrl: link
+        }
+      })
+      console.log(urls)
+      Services.createPackage({...newPackage, images: urls})
+      .then(() => {
+        Notification.pushSuccess(`Tạo mới gói dịch vụ thành công`);
+        handleClose();
+      })
+    })
+    
 
   }
 
@@ -78,7 +112,7 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
               </FormGroup>
               <FormGroup>
                 <Label for='temporaryFile'>Thêm ảnh</Label>
-                <Input type='file' name='temporaryFile' onChange={onFileChange} />
+                <Input type='file' multiple name='temporaryFile' onChange={onFileChange} />
               </FormGroup>
             </Grid>
           </Grid>

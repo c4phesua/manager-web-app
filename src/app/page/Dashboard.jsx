@@ -69,7 +69,7 @@ const Dashboard = (props) => {
                 sm={6}
                 xs={12}
               >
-                <BookingStatusStatistic status={STATUS.ONBOARD} />
+                <BookingStatusStatistic status={STATUS.PROCESSING} />
               </Grid>
               <Grid
                 item

@@ -64,6 +64,10 @@ const Services = {
 
   checkImage(form) {
     return http.post({ url: AI_URL + Apis.checkImage, data: form, headers: { 'Content-Type': 'multipart/form-data' } })
+  },
+
+  uploadBatchFile(form) {
+    return http.post({ url: URL_PERFIX + Apis.uploadBatch, data: form, headers: { 'Content-Type': 'multipart/form-data' } })
   }
 };
 

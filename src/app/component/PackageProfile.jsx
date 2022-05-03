@@ -2,34 +2,26 @@ import React from 'react';
 import { Avatar, Box, Card, CardContent, Divider, Typography } from "@material-ui/core";
 import Carousel from 'react-bootstrap/Carousel';
 import { toVND } from '../util/Helper';
+import { next } from '../util/Count';
 
 
 function PackageProfile({ pkg, ...props }) {
+  console.log(pkg);
 
   const renderSliderImage = (images) => {
     return (
       <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://fpt-sba-images.s3.ap-southeast-2.amazonaws.com/e0c833a82dfd4a37990dc49c15f77535"
-            alt="First slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://fpt-sba-images.s3.ap-southeast-2.amazonaws.com/e0c833a82dfd4a37990dc49c15f77535"
-            alt="First slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://fpt-sba-images.s3.ap-southeast-2.amazonaws.com/e0c833a82dfd4a37990dc49c15f77535"
-            alt="First slide"
-          />
-        </Carousel.Item>
+        {
+          images && images.length > 0 && images.map((image) => (
+            <Carousel.Item key={next()}>
+              <img
+                className="d-block w-100"
+                src={image}
+                alt="First slide"
+              />
+            </Carousel.Item>
+          ))
+        }
       </Carousel>
     )
   }
@@ -47,7 +39,7 @@ function PackageProfile({ pkg, ...props }) {
             height: '60vh'
           }}
         >
-          {renderSliderImage(pkg)}
+          {renderSliderImage(pkg.temporaryImages)}
           <Typography
             color="textPrimary"
             gutterBottom
