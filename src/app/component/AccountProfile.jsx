@@ -52,7 +52,7 @@ const AccountProfile = (props) => {
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
+      {/* <CardActions>
         <Button
           color="primary"
           fullWidth
@@ -60,7 +60,7 @@ const AccountProfile = (props) => {
         >
           Đổi ảnh đại diện
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   )
 };
