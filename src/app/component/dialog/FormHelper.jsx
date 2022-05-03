@@ -1,4 +1,4 @@
-import { USER_GENDER } from "../../util/Constant"
+import { STATUS, USER_GENDER } from "../../util/Constant"
 
 export const getInitialUserForm = () => {
   return {
@@ -30,5 +30,14 @@ export const getInitialPackageForm = () => {
     description: '',
     location: '',
     images: [],
+  }
+}
+
+export const getInitialStyleForm = () => {
+  return {
+    name: '',
+    description: '',
+    imageUrl: '',
+    status: STATUS.ENABLE
   }
 }

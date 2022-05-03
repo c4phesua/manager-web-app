@@ -84,3 +84,8 @@ export const BASIC_COLOR = [
   '#FF00FF',
   '#00008B',
 ]
+
+export const MSG = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+}

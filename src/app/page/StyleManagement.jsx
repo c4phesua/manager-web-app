@@ -1,5 +1,6 @@
-import { Typography } from '@material-ui/core';
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import CreateStyleDialog from '../component/dialog/CreateStyleDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME } from '../util/Constant';
@@ -12,6 +13,8 @@ const StyleManagement = (props) => {
 
   const entity = ENTITY.STYLE;
 
+  const [createStyleDialogOpen, setCreateStyleDialogOpen] = useState(false);
+
   const columnMapping = [
     new TableColumnDataMapping('ID', 'id', (name, row) => idDecorator(name, row, entity), 'text-center'),
     new TableColumnDataMapping('Tên', 'name'),
@@ -19,12 +22,20 @@ const StyleManagement = (props) => {
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
   ]
 
+  const renderCreateStyleButton = () => {
+    return (
+      <Button color='primary' variant="contained" onClick={() => {setCreateStyleDialogOpen(true)}} >
+        Thêm style
+      </Button>
+    )
+  }
+
   return (
     <div>
       <Typography variant='h3' align='left'>{PAGE_NAME.STYLE_MANAGEMENT}</Typography>
       <DataTable
         key={next()}
-        // renderButton={renderCreatePackageButton}
+        renderButton={renderCreateStyleButton}
         useSearchText
         entity={entity}
         size={5}
@@ -32,6 +43,7 @@ const StyleManagement = (props) => {
         usePagination
         useFilter
       />
+      {createStyleDialogOpen && <CreateStyleDialog open={createStyleDialogOpen} handleClose={() => {setCreateStyleDialogOpen(false)}} />}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import http from './http';
 import Apis from './Apis';
 const URL_PERFIX = process.env.REACT_APP_API;
+const AI_URL = process.env.REACT_APP_AI_DOMAIN;
 const Services = {
   getMe() {
     return http.get({ url: URL_PERFIX + Apis.userMe });
@@ -55,6 +56,14 @@ const Services = {
 
   assignManager(showroomId, managerId) {
     return http.post({ url: `${URL_PERFIX}${Apis.showroom}/${showroomId}`, data: { managerId } })
+  },
+
+  createStyle(style) {
+    return http.post({ url: URL_PERFIX + Apis.style, data: style });
+  },
+
+  checkImage(form) {
+    return http.post({ url: AI_URL + Apis.checkImage, data: form, headers: { 'Content-Type': 'multipart/form-data' } })
   }
 };
 
