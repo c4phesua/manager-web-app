@@ -1,15 +1,16 @@
 import { Button, DialogActions, DialogContent } from '@material-ui/core';
-import { Label, Form, FormGroup, Input } from 'reactstrap';
+import { Label, Form, FormGroup, Input, FormFeedback } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
-import { getInitialUserForm } from './FormHelper';
+import { getInitialUserForm, validateEmail } from './FormHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 
 const CreateConsultantDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
   const [newConsultant, setNewConsultant] = useState(getInitialUserForm());
+  const [validEmail, setValidEmail] = useState();
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +28,12 @@ const CreateConsultantDialog = ({ open, handleClose, onCreateSuccess, ...props }
   const handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
+    if (name === 'email') {
+      if (validateEmail(value)) {
+        setValidEmail(true)
+      } 
+      else (setValidEmail(false))
+    }
     setNewConsultant({
       ...newConsultant,
       [name]: value,
@@ -47,7 +54,10 @@ const CreateConsultantDialog = ({ open, handleClose, onCreateSuccess, ...props }
           </FormGroup>
           <FormGroup>
             <Label for='email'>Email</Label>
-            <Input type='email' required name='email' onChange={handleOnChange} />
+            <Input type='email' invalid={newConsultant.email && !validEmail} valid={validEmail} required name='email' onChange={handleOnChange} />
+            {newConsultant.email && <FormFeedback>
+              Email không hợp lệ
+            </FormFeedback>}
           </FormGroup>
           <FormGroup>
             <Label for='phoneNumber'>Số điện thoại</Label>

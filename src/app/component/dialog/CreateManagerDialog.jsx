@@ -1,21 +1,22 @@
 import { Button, DialogActions, DialogContent } from '@material-ui/core';
-import { Label, Form, FormGroup, Input } from 'reactstrap';
+import { Label, Form, FormGroup, Input, FormFeedback } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
-import { getInitialUserForm } from './FormHelper';
+import { getInitialUserForm, validateEmail } from './FormHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 
 const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
   const [newManager, setNewManager] = useState(getInitialUserForm());
+  const [validEmail, setValidEmail] = useState();
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
     Services.createManager(newManager).then((response) => {
       console.log(response);
-      if(onCreateSuccess) {
+      if (onCreateSuccess) {
         console.log('oncreatesuccess');
         onCreateSuccess();
       }
@@ -27,11 +28,19 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
   const handleOnChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
+    if (name === 'email') {
+      if (validateEmail(value)) {
+        setValidEmail(true)
+      } 
+      else (setValidEmail(false))
+    }
     setNewManager({
       ...newManager,
       [name]: value,
     });
   }
+
+  console.log(validEmail, 'validEmail');
 
   return (
     <CloseableDialogComponent title='Thêm quản lý' maxWidth='lg' isOpen={open} handleClose={handleClose} {...props}>
@@ -47,7 +56,10 @@ const CreateManagerDialog = ({ open, handleClose, onCreateSuccess, ...props }) =
           </FormGroup>
           <FormGroup>
             <Label for='email'>Email</Label>
-            <Input required type='email' name='email' onChange={handleOnChange} />
+            <Input required type='email' invalid={newManager.email && !validEmail} valid={validEmail} name='email' onChange={handleOnChange} />
+            {newManager.email && <FormFeedback>
+              Email không hợp lệ
+            </FormFeedback>}
           </FormGroup>
           <FormGroup>
             <Label for='phoneNumber'>Số điện thoại</Label>

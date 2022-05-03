@@ -24,7 +24,7 @@ const AdditionalItems = (props) => {
   const renderCreatePackageButton = () => {
     return (
       <Button color='primary' variant="contained" onClick={handleOpenCreatePackageDialog}>
-        Thêm gói dịch vụ
+        Thêm dịch vụ
       </Button>
     )
   }
