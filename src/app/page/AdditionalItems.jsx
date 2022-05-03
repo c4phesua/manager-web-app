@@ -1,5 +1,6 @@
 import { Button, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
+import CreateAdditionalItemDialog from '../component/dialog/CreateAdditionalItemDialog';
 import CreatePackageDialog from '../component/dialog/CreatePackageDialog';
 import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
@@ -52,7 +53,7 @@ const AdditionalItems = (props) => {
         useFilter
         filterOptions={SIMPLE_FILTER_OPTIONS}
       />
-      {createPackageDialogOpen && <CreatePackageDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}
+      {createPackageDialogOpen && <CreateAdditionalItemDialog handleClose={handleCloseCreatePackageDialog} open={createPackageDialogOpen}/>}
     </div>
   );
 }

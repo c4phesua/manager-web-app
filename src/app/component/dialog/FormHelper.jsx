@@ -42,6 +42,14 @@ export const getInitialStyleForm = () => {
   }
 }
 
+export const getInitialItemForm = () => {
+  return {
+    itemName: '',
+    price: '',
+    status: STATUS.ENABLE
+  }
+}
+
 export const validateEmail = (email) => {
   return String(email)
     .toLowerCase()

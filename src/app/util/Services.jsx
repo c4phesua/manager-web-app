@@ -71,7 +71,11 @@ const Services = {
   },
   updatePackage(pkg, id) {
     return http.put({ url: `${URL_PERFIX + Apis.packAge}/${id}`, data: pkg})
-  }
+  },
+
+  createAdditionalItem(item) {
+    return http.post({url: URL_PERFIX + Apis.additionalItem, data: item})
+  },
 };
 
 export default Services;

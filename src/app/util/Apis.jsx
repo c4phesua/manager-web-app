@@ -11,6 +11,7 @@ const Apis = {
   style: '/style',
   checkImage: '/checkimage',
   uploadBatch: '/files-upload/multi-files',
+  additionalItem: '/addition-item',
 }
 
 export default Apis;
