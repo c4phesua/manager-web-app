@@ -68,6 +68,9 @@ const Services = {
 
   uploadBatchFile(form) {
     return http.post({ url: URL_PERFIX + Apis.uploadBatch, data: form, headers: { 'Content-Type': 'multipart/form-data' } })
+  },
+  updatePackage(pkg, id) {
+    return http.put({ url: `${URL_PERFIX + Apis.packAge}/${id}`, data: pkg})
   }
 };
 

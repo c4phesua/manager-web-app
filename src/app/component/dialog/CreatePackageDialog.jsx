@@ -23,14 +23,12 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
   const onFileChange = (e) => {
     const files = e.target.files;
     if (files.length > 0) {
-      console.log(files);
       let temporaryImages = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const tempImg = URL.createObjectURL(file);
         temporaryImages = temporaryImages.concat(tempImg);
       }
-      console.log(temporaryImages);
       setNewPackage({
         ...newPackage,
         files: files,
@@ -57,7 +55,6 @@ function CreatePackageDialog({ open, handleClose, onCreateSuccess, ...props }) {
           imageUrl: link
         }
       })
-      console.log(urls)
       Services.createPackage({...newPackage, images: urls})
       .then(() => {
         Notification.pushSuccess(`Tạo mới gói dịch vụ thành công`);

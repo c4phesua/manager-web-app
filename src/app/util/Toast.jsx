@@ -25,14 +25,14 @@ export default class Notification {
 
   static pushSuccess(msg, title) {
       if (!title) {
-        title = 'Done!';
+        title = 'Hoàn tất!';
       }
       toastr.success(msg, title, { timeOut: 2000 });
   }
 
   static pushSuccessPermanent(msg, title) {
     if (!title) {
-      title = 'Done!';
+      title = 'Hoàn tất!';
     }
     toastr.success(msg, title);
   }
