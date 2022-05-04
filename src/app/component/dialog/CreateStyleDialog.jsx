@@ -3,10 +3,11 @@ import { Label, Form, FormGroup, Input } from 'reactstrap';
 import React from 'react';
 import { useState } from 'react';
 import CloseableDialogComponent from './CloseableDialogComponent';
-import {  getInitialStyleForm } from './FormHelper';
+import { getInitialStyleForm } from './FormHelper';
 import Services from '../../util/Services';
 import Notification from '../../util/Toast';
 import StylePreview from '../StylePreview';
+import { MSG } from '../../util/Constant';
 
 const CreateStyleDialog = ({ open, handleClose, onCreateSuccess, ...props }) => {
 
@@ -14,13 +15,27 @@ const CreateStyleDialog = ({ open, handleClose, onCreateSuccess, ...props }) => 
 
   const onDialogSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('img', newStyle.file);
+    Services.checkImage(formData)
+      .then(({ data }) => {
+        if (data.msg === MSG.SUCCESS) {
+          createStyle();
+        } else {
+          Notification.pushError(`Tạo mới không thành công, ảnh không hợp lệ`);
+        }
+      });
+  }
+
+
+  const createStyle = () => {
     Services.uploadFile(newStyle.file)
       .then(({ data: { fileUrl } }) => {
         return fileUrl;
       })
       .then((fileUrl) => {
         console.log(fileUrl);
-        Services.createStyle({...newStyle, imageUrl: fileUrl}).then((response) => {
+        Services.createStyle({ ...newStyle, imageUrl: fileUrl }).then((response) => {
           console.log(response);
           if (onCreateSuccess) {
             onCreateSuccess();
