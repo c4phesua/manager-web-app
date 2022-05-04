@@ -32,7 +32,7 @@ const LeftSideBar = ({ user }) => {
     return [RouteConstants.root, RouteConstants.dashBoard].includes(PageRouter.currentPath());
   }
 
-  const { role } = user;
+  const { role, showroomId } = user;
 
   const renderDashboard = () => {
     return (
@@ -67,7 +67,8 @@ const LeftSideBar = ({ user }) => {
 
 
   const items = [
-    { name: PAGE_NAME.SHOWROOM_MANAGEMENT, icon: <Apartment />, link: RouteConstants.showrooms },
+    ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.SHOWROOM_MANAGEMENT, icon: <Apartment />, link: RouteConstants.showrooms }),
+    ...Arrays.insertIf(role === ROLE.MANAGER, { name: PAGE_NAME.SHOWROOM_MANAGEMENT, icon: <Apartment />, link: `${RouteConstants.showrooms}/${showroomId}` }),
     { name: PAGE_NAME.BOOKING_MANAGEMENT, icon: <Receipt />, link: RouteConstants.bookings },
     // ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.PACKAGE_MANAGEMENT, icon: <PhotoCamera />, link: RouteConstants.packages }),
     ...Arrays.insertIf(role === ROLE.ADMIN, { name: PAGE_NAME.STYLE_MANAGEMENT, icon: <Style />, link: RouteConstants.styles }),

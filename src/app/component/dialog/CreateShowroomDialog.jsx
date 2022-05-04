@@ -95,6 +95,10 @@ const CreateShowroomDialog = ({ open, handleClose, onCreateSuccess, ...props }) 
                 <Input required type='textarea' name='description' onChange={handleOnChange} />
               </FormGroup>
               <FormGroup>
+                <Label for='description'>Số ê kíp phục vụ</Label>
+                <Input required type='number' name='photographySlot' onChange={handleOnChange} />
+              </FormGroup>
+              <FormGroup>
                 <Label for='temporaryFile'>Ảnh đại diện</Label>
                 <Input type='file' name='temporaryFile' onChange={onAvatarChange} />
               </FormGroup>

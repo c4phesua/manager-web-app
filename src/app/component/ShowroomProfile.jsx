@@ -50,6 +50,13 @@ const ShowroomProfile = ({ showroom, handleChangeAvatar, ...props }) => {
           </Typography>
           <Typography
             color="textSecondary"
+            gutterBottom
+            variant="body2"
+          >
+            Số lượng ê kíp: {showroom.photographySlot}
+          </Typography>
+          <Typography
+            color="textSecondary"
             variant="body2"
           >
             Địa chỉ: {showroom.address}

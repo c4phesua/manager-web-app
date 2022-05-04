@@ -5,7 +5,7 @@ import DataTable from '../component/table/DataTable';
 import TableColumnDataMapping from '../component/table/TableColumnMapping';
 import { ENTITY, PAGE_NAME, ROLE, SIMPLE_FILTER_OPTIONS } from '../util/Constant';
 import { next } from '../util/Count';
-import { idDecorator, statusDecorator ,viewProfile} from '../util/DecoratorConstant';
+import { idDecorator, statusDecorator, viewProfile } from '../util/DecoratorConstant';
 import Services from '../util/Services'
 import Error from './Error';
 
@@ -14,19 +14,9 @@ const ShowroomManagement = (props) => {
   document.title = PAGE_NAME.SHOWROOM_MANAGEMENT;
 
   const [createShowroomDialogOpen, setCreateShowroomDialogOpen] = useState(false);
-  const [showroom, setShowroom] = useState();
 
   const { user } = props;
   const entity = ENTITY.SHOWROOM;
-
-  useEffect(() => {
-    if (user.showroomId) {
-      Services.getShowroom(2)
-      .then((response) => {
-        console.log(response);
-      })
-    }
-  }, [])
 
   if (user.role === ROLE.MANAGER) {
     if (!user.showroomId) {
@@ -57,9 +47,10 @@ const ShowroomManagement = (props) => {
     new TableColumnDataMapping('Tên', 'name'),
     new TableColumnDataMapping('Số điện thoại', 'phoneNumber'),
     new TableColumnDataMapping('Địa chỉ', 'address'),
-    new TableColumnDataMapping('Id người quản lý', 'managerId'),
+    new TableColumnDataMapping('Id người quản lý', 'managerId', undefined, 'text-center'),
+    new TableColumnDataMapping('Ê kíp phục vụ', 'photographySlot', undefined, 'text-center'),
     new TableColumnDataMapping('Trạng thái', 'status', (name, row) => statusDecorator(name, row, entity)),
-    new TableColumnDataMapping('Thông tin', 'profile', (name,row) => viewProfile(name,row,entity),'text-center' ),
+    new TableColumnDataMapping('Thông tin', 'profile', (name, row) => viewProfile(name, row, entity), 'text-center'),
   ]
 
   const renderCreateShowroomButton = () => {

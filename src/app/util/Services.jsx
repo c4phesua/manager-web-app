@@ -76,6 +76,10 @@ const Services = {
   createAdditionalItem(item) {
     return http.post({url: URL_PERFIX + Apis.additionalItem, data: item})
   },
+
+  updateShowroom(showroom, id) {
+    return http.put({ url: `${URL_PERFIX}${Apis.showroom}/${id}`, data: showroom })
+  }
 };
 
 export default Services;
