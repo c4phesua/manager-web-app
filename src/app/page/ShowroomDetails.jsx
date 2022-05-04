@@ -6,7 +6,7 @@ import Notification from '../util/Toast';
 function ShowroomDetails(props) {
 
   const { params: { id } } = props.match;
-  const user = localStorage.getItem("User");
+  const user = JSON.parse(localStorage.getItem("User"));
   const [showroom, setShowroom] = useState({});
   const [managers, setManagers] = useState([]);
   const [managerId, setManagerId] = useState();
@@ -28,8 +28,6 @@ function ShowroomDetails(props) {
       getManagerList();
     }
   }, [])
-
-  const isDisable = user.role === ROLE.ADMIN;
 
   const updateShowroomManager = (e) => {
     e.preventDefault();
